@@ -1,0 +1,30 @@
+.DS_Store
+node_modules/
+dist/
+.env
+.vscode/
+# OS
+.DS_Store
+Thumbs.db
+
+# Node / build
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Archives
+*.zip
+*.tar
+*.gz
+
+# Logs
+*.log

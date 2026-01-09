@@ -7,7 +7,7 @@
     <title>Chudaraj Kushwaha - Elite Cybersecurity Professional</title>
     <meta name="description" content="Offensive Security | Defensive Intelligence | Cyber Resilience">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;">
+        content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.github.com;">
 
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -120,15 +120,24 @@
 
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-value terminal-green">18</span>
+                            <span class="stat-value terminal-green" id="github-repos">
+                                <i data-lucide="loader" class="loading-icon"
+                                    style="width: 20px; height: 20px; animation: spin 1s linear infinite;"></i>
+                            </span>
                             <span class="stat-label">GitHub Repositories</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-value terminal-green">10+</span>
+                            <span class="stat-value terminal-green" id="github-projects">
+                                <i data-lucide="loader" class="loading-icon"
+                                    style="width: 20px; height: 20px; animation: spin 1s linear infinite;"></i>
+                            </span>
                             <span class="stat-label">Security Projects</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-value terminal-green">3</span>
+                            <span class="stat-value terminal-green" id="github-followers">
+                                <i data-lucide="loader" class="loading-icon"
+                                    style="width: 20px; height: 20px; animation: spin 1s linear infinite;"></i>
+                            </span>
                             <span class="stat-label">GitHub Followers</span>
                         </div>
                     </div>

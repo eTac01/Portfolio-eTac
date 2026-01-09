@@ -123,7 +123,8 @@ class InteractiveTerminal {
         };
 
         this.input.addEventListener('keydown', (e) => this.handleInput(e));
-        this.input.focus();
+        // Removed auto-focus to prevent scrolling to terminal on page load
+        // this.input.focus();
 
         // Set initial content
         this.clearTerminal();
@@ -376,6 +377,97 @@ class Loader {
     }
 }
 
+// GitHub Stats Fetcher
+class GitHubStats {
+    constructor(username = 'eTac01') {
+        this.username = username;
+        this.apiUrl = `https://api.github.com/users/${username}`;
+        this.reposUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+        this.fetchStats();
+    }
+
+    async fetchStats() {
+        try {
+            // Fetch user data and repositories in parallel
+            const [userResponse, reposResponse] = await Promise.all([
+                fetch(this.apiUrl),
+                fetch(this.reposUrl)
+            ]);
+
+            if (!userResponse.ok || !reposResponse.ok) {
+                throw new Error('Failed to fetch GitHub data');
+            }
+
+            const userData = await userResponse.json();
+            const reposData = await reposResponse.json();
+
+            // Update the stats
+            this.updateStats(userData, reposData);
+        } catch (error) {
+            console.error('Error fetching GitHub stats:', error);
+            // Fallback to default values
+            this.updateStatsWithDefaults();
+        }
+    }
+
+    updateStats(userData, reposData) {
+        const reposElement = document.getElementById('github-repos');
+        const projectsElement = document.getElementById('github-projects');
+        const followersElement = document.getElementById('github-followers');
+
+        // Total repositories
+        const totalRepos = userData.public_repos || reposData.length;
+
+        // Count security-related projects (based on keywords in name/description)
+        const securityKeywords = ['security', 'malware', 'pentest', 'exploit', 'vulnerability', 'ctf', 'hack', 'cyber', 'network', 'forensic'];
+        const securityProjects = reposData.filter(repo => {
+            const name = (repo.name || '').toLowerCase();
+            const description = (repo.description || '').toLowerCase();
+            return securityKeywords.some(keyword => name.includes(keyword) || description.includes(keyword));
+        }).length;
+
+        // Followers
+        const followers = userData.followers || 0;
+
+        // Animate the numbers
+        if (reposElement) {
+            this.animateNumber(reposElement, totalRepos, '+');
+        }
+        if (projectsElement) {
+            this.animateNumber(projectsElement, securityProjects, '+');
+        }
+        if (followersElement) {
+            this.animateNumber(followersElement, followers, '');
+        }
+    }
+
+    updateStatsWithDefaults() {
+        const reposElement = document.getElementById('github-repos');
+        const projectsElement = document.getElementById('github-projects');
+        const followersElement = document.getElementById('github-followers');
+
+        if (reposElement) reposElement.textContent = '18+';
+        if (projectsElement) projectsElement.textContent = '10+';
+        if (followersElement) followersElement.textContent = '3';
+    }
+
+    animateNumber(element, targetNumber, suffix = '') {
+        let currentNumber = 0;
+        const increment = Math.ceil(targetNumber / 20);
+        const duration = 1000; // 1 second
+        const stepTime = duration / (targetNumber / increment);
+
+        const timer = setInterval(() => {
+            currentNumber += increment;
+            if (currentNumber >= targetNumber) {
+                currentNumber = targetNumber;
+                clearInterval(timer);
+            }
+            element.textContent = currentNumber + suffix;
+        }, stepTime);
+    }
+}
+
 // Contact Form Handler
 class ContactForm {
     constructor() {
@@ -442,13 +534,15 @@ function smoothScroll() {
 }
 
 // Initialize Everything
-// Initialize Everything
 const init = () => {
     // Initialize Binary Rain
     new BinaryRain();
 
     // Initialize Loader
     new Loader();
+
+    // Initialize GitHub Stats (Live Repository Count)
+    new GitHubStats('eTac01');
 
     // Initialize Typewriter for hero command
     const typedCommand = document.getElementById('typed-command');
