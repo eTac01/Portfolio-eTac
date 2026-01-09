@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - Chudaraj Kushwaha</title>
+    <meta name="description" content="Complete portfolio of cybersecurity projects">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+
+<body>
+    <!-- Binary Rain Canvas Background -->
+    <canvas id="binary-rain" class="binary-canvas"></canvas>
+
+    <!-- Top Navigation -->
+    <nav id="navbar" class="top-nav">
+        <div class="top-nav-container">
+            <div class="nav-links">
+                <a href="index.html" class="nav-item" title="Home">
+                    <i data-lucide="home"></i>
+                </a>
+                <a href="index.html#about" class="nav-item" title="About">
+                    <i data-lucide="user"></i>
+                </a>
+                <a href="index.html#skills" class="nav-item" title="Skills">
+                    <i data-lucide="code"></i>
+                </a>
+                <a href="projects.html" class="nav-item active" title="Projects">
+                    <i data-lucide="folder-git-2"></i>
+                </a>
+                <a href="index.html#contact" class="nav-item" title="Contact">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Projects Section -->
+        <section id="all-projects" class="section-dark" style="min-height: 100vh; padding-top: 120px;">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number terminal-green">ALL.</span>
+                    <h2 class="section-title">Complete Project Portfolio</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <!-- Back Button -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <a href="index.html"
+                        style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #1e293b; color: #e2e8f0; text-decoration: none; border-radius: 0.5rem; font-weight: 600; border: 2px solid #334155; transition: all 0.3s ease;">
+                        <i data-lucide="arrow-left" style="width: 20px; height: 20px;"></i>
+                        Back to Home
+                    </a>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: Malware Classifier -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./malware_classifier</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/malware_classifier.png" alt="Malware Classifier"
+                                class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Analyzing threat
+                                vectors...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> 1,247 malware samples
+                                detected</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Detection coverage: <span
+                                    class="glow-green">94.3%</span></p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">VirusTotal API</span>
+                            <span class="tech-tag">Threat Intel</span>
+                            <a href="https://github.com/eTac01/Malware-File-Classification-Batch-10"
+                                class="project-link" target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Network Analyzer -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./network_analyzer</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/network_analyzer.png" alt="Network Analyzer" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Monitoring enterprise
+                                traffic...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Wireshark + Tshark
+                                integration</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Continuous packet capture
+                                enabled</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">Network Security</span>
+                            <a href="https://github.com/eTac01/Network-analysis-using-wireshark" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Log Analyzer -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./log_analyzer</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/log_analyzer.png" alt="Log Analyzer" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Parsing security logs...
+                            </p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Intrusion patterns
+                                detected</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> SIEM component: <span
+                                    class="glow-cyan">ACTIVE</span></p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SIEM</span>
+                            <span class="tech-tag">Log Analysis</span>
+                            <a href="https://github.com/eTac01/Log-analyzer" class="project-link" target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Phishing Detection -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./phishing_detector</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/phishing_detection.png" alt="Phishing Detection"
+                                class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Analyzing email headers...
+                            </p>
+                            <p class="terminal-line warning"><span class="terminal-amber">!</span> Spoofing detected</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Threat level: <span
+                                    class="glow-red">HIGH</span></p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Email Security</span>
+                            <span class="tech-tag">Threat Detection</span>
+                            <a href="https://github.com/eTac01/Phishing-Email-Analysis" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Vulnerability Scanner -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./vuln_scanner</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/vulnerability_scanner.png" alt="Vulnerability Scanner"
+                                class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Scanning localhost...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> 127 ports scanned</p>
+                            <p class="terminal-line warning"><span class="terminal-amber">!</span> 3 vulnerabilities
+                                found</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Nmap</span>
+                            <span class="tech-tag">Vulnerability Assessment</span>
+                            <a href="https://github.com/eTac01/Vulnerability-Scan-Report" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Password Strength -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./password_checker</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/password_strength.png" alt="Password Strength"
+                                class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Evaluating password
+                                strength...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Complexity check:
+                                <span class="glow-green">PASSED</span>
+                            </p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Entropy score: 87/100</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Cryptography</span>
+                            <span class="tech-tag">Authentication</span>
+                            <a href="https://github.com/eTac01/Password-Strength-Evaluation" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Linux Firewall -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./firewall_setup</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/firewall.png" alt="Firewall Setup" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Configuring UFW rules...
+                            </p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Firewall enabled</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> System hardening: <span
+                                    class="glow-green">COMPLETE</span></p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">UFW</span>
+                            <span class="tech-tag">System Security</span>
+                            <a href="https://github.com/eTac01/Setup-and-Use-a-Firewall-on-Linux" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Wireshark Traffic Analysis -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./traffic_analyzer</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/network_analyzer.png" alt="Traffic Analysis" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Capturing live network
+                                packets...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Protocol
+                                identification: <span class="glow-cyan">ACTIVE</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Traffic types analyzed</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">Network Analysis</span>
+                            <span class="tech-tag">Protocols</span>
+                            <a href="https://github.com/eTac01/Wireshark-Traffic-Analysis" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 9: Linux Backup Solution -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./backup_system</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/linux_backup.png" alt="Linux Backup" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Initiating automated
+                                backup...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Encrypted backup:
+                                <span class="glow-green">COMPLETE</span>
+                            </p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Manual intervention
+                                reduced by 70%</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">Automation</span>
+                            <span class="tech-tag">Data Security</span>
+                            <a href="https://github.com/eTac01/linux-backup-solution" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 10: Linux Keylogger 2.0 -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./keylogger_v2</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/keylogger.png" alt="Keylogger" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Recording user input...
+                            </p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Background
+                                monitoring: <span class="glow-cyan">ACTIVE</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Using pyxhook for
+                                keystroke capture</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">Monitoring</span>
+                            <a href="https://github.com/eTac01/Linux-keylogger-2.0" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 11: Network Scan Task -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./network_scan</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/network_scan.png" alt="Network Scan" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Discovering open ports...
+                            </p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Nmap scan: <span
+                                    class="glow-green">COMPLETE</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Local network devices
+                                mapped</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Nmap</span>
+                            <span class="tech-tag">Network Discovery</span>
+                            <span class="tech-tag">Port Scanning</span>
+                            <a href="https://github.com/eTac01/network-scan-task" class="project-link" target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 12: Working with VPNs -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./vpn_setup</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/vpn.png" alt="VPN Setup" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Establishing secure VPN
+                                tunnel...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> ProtonVPN connection:
+                                <span class="glow-green">ACTIVE</span>
+                            </p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Encrypted connectivity
+                                verified</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">VPN</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">Privacy</span>
+                            <a href="https://github.com/eTac01/-Working-with-VPNs-" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 13: Browser Extensions Security -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./extension_scanner</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/browser_extension.png" alt="Browser Extensions"
+                                class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Scanning browser
+                                extensions...</p>
+                            <p class="terminal-line warning"><span class="terminal-amber">!</span> Suspicious
+                                permissions detected</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Reviewing data access
+                                rights</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Browser Security</span>
+                            <span class="tech-tag">Privacy</span>
+                            <span class="tech-tag">Analysis</span>
+                            <a href="https://github.com/eTac01/Identify-Remove-Suspicious-Browser-Extensions"
+                                class="project-link" target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 14: Offline AI Assistant -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./offline_ai_assistant</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/ai_project_preview.png" alt="AI Assistant" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Initializing offline voice
+                                recognition...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Malware filtering:
+                                <span class="glow-green">ACTIVE</span>
+                            </p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> False positives reduced by
+                                20%</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">Voice Security</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 15: Portfolio -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./portfolio</span>
+                        </div>
+                        <div class="terminal-image-container">
+                            <img src="assets/ai_project_preview.png" alt="Portfolio" class="terminal-preview-img">
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Cybersecurity portfolio
+                                website...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> Cyberpunk design:
+                                <span class="glow-cyan">ACTIVE</span>
+                            </p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Showcasing projects and
+                                skills</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <a href="https://github.com/eTac01/Portfolio-eTac" class="project-link" target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

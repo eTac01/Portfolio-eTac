@@ -633,3 +633,156 @@ document.head.appendChild(style);
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.style.setProperty('--animation-duration', '0.01ms');
 }
+
+// Bouncing Button Animation
+document.addEventListener('DOMContentLoaded', function() {
+    const bouncingBtn = document.querySelector('.view-all-projects-btn');
+    if (!bouncingBtn) return;
+
+    // Make button position fixed for bouncing
+    bouncingBtn.style.position = 'fixed';
+    bouncingBtn.style.zIndex = '9999';
+    
+    let x = Math.random() * (window.innerWidth - 300);
+    let y = Math.random() * (window.innerHeight - 60);
+    let dx = 2 + Math.random() * 2; // Random speed X
+    let dy = 2 + Math.random() * 2; // Random speed Y
+    
+    function animateBounce() {
+        const btnWidth = bouncingBtn.offsetWidth;
+        const btnHeight = bouncingBtn.offsetHeight;
+        
+        // Update position
+        x += dx;
+        y += dy;
+        
+        // Bounce off edges
+        if (x + btnWidth >= window.innerWidth || x <= 0) {
+            dx = -dx;
+            // Random color change on bounce
+            changeButtonColor();
+        }
+        if (y + btnHeight >= window.innerHeight || y <= 0) {
+            dy = -dy;
+            // Random color change on bounce
+            changeButtonColor();
+        }
+        
+        // Apply position
+        bouncingBtn.style.left = x + 'px';
+        bouncingBtn.style.top = y + 'px';
+        
+        requestAnimationFrame(animateBounce);
+    }
+    
+    function changeButtonColor() {
+        const colors = [
+            'linear-gradient(135deg, #1e40af, #3b82f6)',
+            'linear-gradient(135deg, #7c3aed, #a78bfa)',
+            'linear-gradient(135deg, #059669, #10b981)',
+            'linear-gradient(135deg, #dc2626, #f87171)',
+            'linear-gradient(135deg, #ea580c, #fb923c)'
+        ];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        bouncingBtn.style.background = randomColor;
+    }
+    
+    // Pause animation on hover
+    bouncingBtn.addEventListener('mouseenter', function() {
+        dx = 0;
+        dy = 0;
+    });
+    
+    bouncingBtn.addEventListener('mouseleave', function() {
+        dx = 2 + Math.random() * 2;
+        dy = 2 + Math.random() * 2;
+    });
+    
+    animateBounce();
+});
+
+// Ball Bounce Physics for Button
+document.addEventListener('DOMContentLoaded', function() {
+    const bouncingBtn = document.querySelector('.view-all-projects-btn');
+    if (!bouncingBtn) return;
+
+    // Make button position fixed for bouncing
+    bouncingBtn.style.position = 'fixed';
+    bouncingBtn.style.zIndex = '9999';
+    
+    let x = Math.random() * (window.innerWidth - 350);
+    let y = 100;
+    let dx = 3 + Math.random() * 3;
+    let dy = 0;
+    const gravity = 0.5;
+    const damping = 0.85; // Energy loss on bounce
+    const minBounceVelocity = 2;
+    
+    function animateBallBounce() {
+        const btnWidth = bouncingBtn.offsetWidth;
+        const btnHeight = bouncingBtn.offsetHeight;
+        
+        // Apply gravity
+        dy += gravity;
+        
+        // Update position
+        x += dx;
+        y += dy;
+        
+        // Bounce off left/right walls
+        if (x + btnWidth >= window.innerWidth || x <= 0) {
+            dx = -dx * damping;
+            x = x <= 0 ? 0 : window.innerWidth - btnWidth;
+        }
+        
+        // Bounce off floor with realistic physics
+        if (y + btnHeight >= window.innerHeight) {
+            y = window.innerHeight - btnHeight;
+            dy = -dy * damping;
+            
+            // Add slight randomness to bounce
+            if (Math.abs(dy) < minBounceVelocity) {
+                dy = -(minBounceVelocity + Math.random() * 3);
+            }
+            
+            // Slight horizontal movement on bounce
+            dx += (Math.random() - 0.5) * 2;
+        }
+        
+        // Bounce off ceiling
+        if (y <= 0) {
+            y = 0;
+            dy = -dy * damping;
+        }
+        
+        // Keep horizontal speed in check
+        if (Math.abs(dx) > 8) dx = dx > 0 ? 8 : -8;
+        if (Math.abs(dx) < 0.5) dx = dx > 0 ? 0.5 : -0.5;
+        
+        // Apply position
+        bouncingBtn.style.left = x + 'px';
+        bouncingBtn.style.top = y + 'px';
+        
+        requestAnimationFrame(animateBallBounce);
+    }
+    
+    // Pause animation on hover
+    let isPaused = false;
+    bouncingBtn.addEventListener('mouseenter', function() {
+        isPaused = true;
+    });
+    
+    bouncingBtn.addEventListener('mouseleave', function() {
+        isPaused = false;
+    });
+    
+    function animate() {
+        if (!isPaused) {
+            animateBallBounce();
+        } else {
+            requestAnimationFrame(animate);
+        }
+    }
+    
+    animate();
+});
