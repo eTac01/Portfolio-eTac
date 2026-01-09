@@ -93,7 +93,7 @@ class Typewriter {
     }
 }
 
-// Interactive Terminal
+// Interactive Terminal with Live Features
 class InteractiveTerminal {
     constructor() {
         this.output = document.getElementById('terminal-output');
@@ -101,10 +101,14 @@ class InteractiveTerminal {
 
         if (!this.output || !this.input) return;
 
+        this.commandHistory = [];
+        this.historyIndex = -1;
+        this.isTyping = false;
+
         this.commands = {
             help: () => this.showHelp(),
             whoami: () => 'chudaraj_kushwaha',
-            ls: () => 'skills.txt  projects/  certifications/  contact.txt',
+            ls: () => 'skills.txt  projects/  certifications/  contact.txt  resume.pdf',
             'cat skills.txt': () => this.showSkills(),
             'cat contact.txt': () => this.showContact(),
             'cat certifications/': () => this.showCertifications(),
@@ -116,31 +120,100 @@ class InteractiveTerminal {
             'show resume': () => this.openResume(),
             'nmap -sV localhost': () => this.showNmap(),
             clear: () => this.clearTerminal(),
-            about: () => 'Elite cybersecurity professional | Offensive Security | Defensive Intelligence',
+            about: () => 'Elite cybersecurity professional | SOC Analyst | Offensive & Defensive Security',
             date: () => new Date().toLocaleString(),
             pwd: () => '/home/chudaraj/security',
-            uname: () => 'Linux security-terminal 5.15.0-kali x86_64'
+            uname: () => 'Linux security-terminal 5.15.0-kali x86_64',
+            neofetch: () => this.showNeofetch(),
+            htop: () => this.showSystemStats(),
+            'ps aux': () => this.showProcesses(),
+            ifconfig: () => this.showNetwork(),
+            'cat /etc/passwd': () => this.showUsers(),
+            history: () => this.showHistory(),
+            banner: () => this.showBanner(),
+            skills: () => this.showSkills(),
+            contact: () => this.showContact()
         };
 
         this.input.addEventListener('keydown', (e) => this.handleInput(e));
-        // Removed auto-focus to prevent scrolling to terminal on page load
-        // this.input.focus();
 
-        // Set initial content
+        // Auto-type welcome message
         this.clearTerminal();
+        this.autoTypeWelcome();
+    }
+
+    async autoTypeWelcome() {
+        this.isTyping = true;
+        const messages = [
+            { text: 'Initializing secure terminal...', color: 'terminal-green', delay: 50 },
+            { text: 'Loading security modules...', color: 'terminal-green', delay: 50 },
+            { text: 'Establishing encrypted connection...', color: 'terminal-green', delay: 50 },
+            { text: '✓ Connection established', color: 'terminal-green', delay: 100 },
+            { text: '', color: '', delay: 0 },
+            { text: 'Welcome to Chudaraj\'s Security Terminal', color: 'terminal-green glow-green', delay: 80 },
+            { text: 'Type "help" for available commands', color: '', delay: 60 },
+            { text: 'Type "banner" for ASCII art', color: '', delay: 60 },
+            { text: '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', color: '', delay: 20 }
+        ];
+
+        for (const msg of messages) {
+            await this.typeMessage(msg.text, msg.color, msg.delay);
+            await this.sleep(300);
+        }
+
+        this.isTyping = false;
+        this.input.focus();
+    }
+
+    async typeMessage(text, className = '', speed = 50) {
+        const line = document.createElement('p');
+        line.className = `terminal-line ${className}`;
+        this.output.appendChild(line);
+
+        for (let i = 0; i < text.length; i++) {
+            line.textContent += text[i];
+            this.scrollToBottom();
+            await this.sleep(speed);
+        }
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     handleInput(e) {
+        if (this.isTyping) {
+            e.preventDefault();
+            return;
+        }
+
         if (e.key === 'Enter') {
             const command = this.input.value.trim();
             this.input.value = '';
 
             if (command) {
+                this.commandHistory.push(command);
+                this.historyIndex = this.commandHistory.length;
                 this.addLine(`<span class="terminal-green">$</span> ${command}`);
                 this.executeCommand(command);
             }
 
             this.scrollToBottom();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (this.historyIndex > 0) {
+                this.historyIndex--;
+                this.input.value = this.commandHistory[this.historyIndex];
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (this.historyIndex < this.commandHistory.length - 1) {
+                this.historyIndex++;
+                this.input.value = this.commandHistory[this.historyIndex];
+            } else {
+                this.historyIndex = this.commandHistory.length;
+                this.input.value = '';
+            }
         }
     }
 
@@ -158,9 +231,110 @@ class InteractiveTerminal {
         }
     }
 
+    showBanner() {
+        return `
+<span class="terminal-green">
+   _____ _               _                   _ 
+  / ____| |             | |                 (_)
+ | |    | |__  _   _  __| | __ _ _ __ __ _   _ 
+ | |    | '_ \\| | | |/ _\` |/ _\` | '__/ _\` | | |
+ | |____| | | | |_| | (_| | (_| | | | (_| |_| |
+  \\_____|_| |_|\\__,_|\\__,_|\\__,_|_|  \\__,_(_) |
+                                           _/ |
+                                          |__/ 
+</span>
+<span class="glow-cyan">Security Terminal v2.0</span> | SOC Analyst | CTF Player
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+    }
+
+    showNeofetch() {
+        const uptime = Math.floor((Date.now() - performance.timing.navigationStart) / 1000);
+        return `
+<span class="terminal-green">chudaraj@security-terminal</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<span class="terminal-green">OS:</span> Kali Linux 2024.1
+<span class="terminal-green">Kernel:</span> 5.15.0-kali
+<span class="terminal-green">Uptime:</span> ${uptime} seconds
+<span class="terminal-green">Shell:</span> bash 5.2.15
+<span class="terminal-green">Terminal:</span> SecureTerminal
+<span class="terminal-green">CPU:</span> Intel i7-12700K (12) @ 3.6GHz
+<span class="terminal-green">Memory:</span> ${Math.floor(Math.random() * 2000 + 1000)}MB / 16384MB
+<span class="terminal-green">Threat Level:</span> <span class="glow-green">SECURE</span>`;
+    }
+
+    showSystemStats() {
+        const cpu = Math.floor(Math.random() * 30 + 10);
+        const mem = Math.floor(Math.random() * 40 + 20);
+        return `
+<span class="terminal-green">System Resource Monitor</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CPU Usage:    [${this.createBar(cpu, 50)}] ${cpu}%
+Memory:       [${this.createBar(mem, 50)}] ${mem}%
+Disk I/O:     [${this.createBar(15, 50)}] 15%
+Network:      [${this.createBar(8, 50)}] 8%
+
+<span class="terminal-green">Active Security Processes:</span>
+  ✓ firewall.service    - ACTIVE
+  ✓ ids.service         - MONITORING
+  ✓ antivirus.service   - SCANNING
+  ✓ vpn.service         - CONNECTED`;
+    }
+
+    showProcesses() {
+        return `
+<span class="terminal-green">USER       PID  %CPU %MEM    COMMAND</span>
+root         1   0.1  0.2    /sbin/init
+chudaraj  1337   2.5  1.8    /usr/bin/metasploit
+chudaraj  2048   1.2  0.9    /usr/bin/wireshark
+chudaraj  3141   0.8  0.5    /usr/bin/burpsuite
+chudaraj  4096   0.3  0.4    /usr/bin/nmap
+chudaraj  5555   0.1  0.2    /usr/bin/terminal`;
+    }
+
+    showNetwork() {
+        return `
+<span class="terminal-green">Network Interfaces:</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+      inet 192.168.1.${Math.floor(Math.random() * 200 + 10)}
+      netmask 255.255.255.0
+      ether ${this.generateMAC()}
+
+tun0: flags=4305<UP,POINTOPOINT,RUNNING,NOARP>
+      inet 10.10.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}
+      <span class="terminal-green">VPN: CONNECTED</span>`;
+    }
+
+    showUsers() {
+        return `
+<span class="terminal-green">System Users:</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+root:x:0:0:root:/root:/bin/bash
+chudaraj:x:1000:1000:Chudaraj Kushwaha:/home/chudaraj:/bin/bash
+security:x:1001:1001:Security Analyst:/home/security:/bin/bash`;
+    }
+
+    showHistory() {
+        if (this.commandHistory.length === 0) {
+            return 'No command history available';
+        }
+        return this.commandHistory.map((cmd, i) => `  ${i + 1}  ${cmd}`).join('\n');
+    }
+
+    createBar(percentage, width) {
+        const filled = Math.floor((percentage / 100) * width);
+        const empty = width - filled;
+        return '█'.repeat(filled) + '░'.repeat(empty);
+    }
+
+    generateMAC() {
+        return Array.from({ length: 6 }, () =>
+            Math.floor(Math.random() * 256).toString(16).padStart(2, '0')
+        ).join(':');
+    }
+
     openResume() {
-        const resumeUrl = 'resume.html'; // Default to HTML version if available
-        // In a real scenario, check if file exists or use specific path
+        const resumeUrl = 'resume.html';
         window.open(resumeUrl, '_blank');
         return '<span class="terminal-green">Opening resume in new secure frequency...</span>';
     }
@@ -176,6 +350,12 @@ class InteractiveTerminal {
   cat skills.txt      Display skills
   cat contact.txt     Display contact info
   nmap -sV localhost  Scan local services
+  neofetch            System information
+  htop                System resource monitor
+  ps aux              Show running processes
+  ifconfig            Network configuration
+  banner              Display ASCII banner
+  history             Show command history
   about               About me
   pwd                 Print working directory
   clear               Clear terminal
@@ -230,10 +410,10 @@ class InteractiveTerminal {
         return `
 <span class="terminal-green">[CONTACT INFORMATION]</span>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Email:    ranchji806@gmail.com
+  Email:    chudarajkushwaha@gmail.com
   GitHub:   github.com/eTac01
   LinkedIn: linkedin.com/in/chudaraj-kushwaha-39b189266/
-  Location: Chittoor, AP
+  Location: India
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
     }
 
@@ -251,11 +431,7 @@ PORT     STATE SERVICE    VERSION
     }
 
     clearTerminal() {
-        this.output.innerHTML = `
-<p class="terminal-line terminal-green">Welcome to Chudaraj's Security Terminal</p>
-<p class="terminal-line">Type 'help' for available commands</p>
-<p class="terminal-line">Type 'resume' to view full CV</p>
-<p class="terminal-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>`;
+        this.output.innerHTML = '';
         return '';
     }
 
@@ -635,27 +811,27 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 // Bouncing Button Animation
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const bouncingBtn = document.querySelector('.view-all-projects-btn');
     if (!bouncingBtn) return;
 
     // Make button position fixed for bouncing
     bouncingBtn.style.position = 'fixed';
     bouncingBtn.style.zIndex = '9999';
-    
+
     let x = Math.random() * (window.innerWidth - 300);
     let y = Math.random() * (window.innerHeight - 60);
     let dx = 2 + Math.random() * 2; // Random speed X
     let dy = 2 + Math.random() * 2; // Random speed Y
-    
+
     function animateBounce() {
         const btnWidth = bouncingBtn.offsetWidth;
         const btnHeight = bouncingBtn.offsetHeight;
-        
+
         // Update position
         x += dx;
         y += dy;
-        
+
         // Bounce off edges
         if (x + btnWidth >= window.innerWidth || x <= 0) {
             dx = -dx;
@@ -667,14 +843,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Random color change on bounce
             changeButtonColor();
         }
-        
+
         // Apply position
         bouncingBtn.style.left = x + 'px';
         bouncingBtn.style.top = y + 'px';
-        
+
         requestAnimationFrame(animateBounce);
     }
-    
+
     function changeButtonColor() {
         const colors = [
             'linear-gradient(135deg, #1e40af, #3b82f6)',
@@ -686,30 +862,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         bouncingBtn.style.background = randomColor;
     }
-    
+
     // Pause animation on hover
-    bouncingBtn.addEventListener('mouseenter', function() {
+    bouncingBtn.addEventListener('mouseenter', function () {
         dx = 0;
         dy = 0;
     });
-    
-    bouncingBtn.addEventListener('mouseleave', function() {
+
+    bouncingBtn.addEventListener('mouseleave', function () {
         dx = 2 + Math.random() * 2;
         dy = 2 + Math.random() * 2;
     });
-    
+
     animateBounce();
 });
 
 // Ball Bounce Physics for Button
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const bouncingBtn = document.querySelector('.view-all-projects-btn');
     if (!bouncingBtn) return;
 
     // Make button position fixed for bouncing
     bouncingBtn.style.position = 'fixed';
     bouncingBtn.style.zIndex = '9999';
-    
+
     let x = Math.random() * (window.innerWidth - 350);
     let y = 100;
     let dx = 3 + Math.random() * 3;
@@ -717,65 +893,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const gravity = 0.5;
     const damping = 0.85; // Energy loss on bounce
     const minBounceVelocity = 2;
-    
+
     function animateBallBounce() {
         const btnWidth = bouncingBtn.offsetWidth;
         const btnHeight = bouncingBtn.offsetHeight;
-        
+
         // Apply gravity
         dy += gravity;
-        
+
         // Update position
         x += dx;
         y += dy;
-        
+
         // Bounce off left/right walls
         if (x + btnWidth >= window.innerWidth || x <= 0) {
             dx = -dx * damping;
             x = x <= 0 ? 0 : window.innerWidth - btnWidth;
         }
-        
+
         // Bounce off floor with realistic physics
         if (y + btnHeight >= window.innerHeight) {
             y = window.innerHeight - btnHeight;
             dy = -dy * damping;
-            
+
             // Add slight randomness to bounce
             if (Math.abs(dy) < minBounceVelocity) {
                 dy = -(minBounceVelocity + Math.random() * 3);
             }
-            
+
             // Slight horizontal movement on bounce
             dx += (Math.random() - 0.5) * 2;
         }
-        
+
         // Bounce off ceiling
         if (y <= 0) {
             y = 0;
             dy = -dy * damping;
         }
-        
+
         // Keep horizontal speed in check
         if (Math.abs(dx) > 8) dx = dx > 0 ? 8 : -8;
         if (Math.abs(dx) < 0.5) dx = dx > 0 ? 0.5 : -0.5;
-        
+
         // Apply position
         bouncingBtn.style.left = x + 'px';
         bouncingBtn.style.top = y + 'px';
-        
+
         requestAnimationFrame(animateBallBounce);
     }
-    
+
     // Pause animation on hover
     let isPaused = false;
-    bouncingBtn.addEventListener('mouseenter', function() {
+    bouncingBtn.addEventListener('mouseenter', function () {
         isPaused = true;
     });
-    
-    bouncingBtn.addEventListener('mouseleave', function() {
+
+    bouncingBtn.addEventListener('mouseleave', function () {
         isPaused = false;
     });
-    
+
     function animate() {
         if (!isPaused) {
             animateBallBounce();
@@ -783,6 +959,6 @@ document.addEventListener('DOMContentLoaded', function() {
             requestAnimationFrame(animate);
         }
     }
-    
+
     animate();
 });

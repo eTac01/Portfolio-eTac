@@ -4,10 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chudaraj Kushwaha - Elite Cybersecurity Professional</title>
+    <title>Chudaraj Kushwaha - CyberSecurity Enthusiast</title>
     <meta name="description" content="Offensive Security | Defensive Intelligence | Cyber Resilience">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.github.com;">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="eTac - Chudaraj Kushwaha | Cybersecurity Enthusiast">
+    <meta property="og:description" content="Breaking firewalls and hearts since 2024 | Offensive & Defensive Security">
+    <meta property="og:image" content="assets/etac_logo.webp">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="eTac - Cybersecurity Enthusiast">
+    <meta name="twitter:description" content="Breaking firewalls and hearts since 2024">
+    <meta name="twitter:image" content="assets/etac_logo.webp">
 
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -30,6 +45,18 @@
             </div>
         </div>
     </div>
+
+    <!-- Fixed Header Bar -->
+    <header class="header-bar">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="assets/etac_logo.webp" alt="eTac" class="logo-img">
+            </div>
+            <div class="header-tagline">
+                <span class="tagline-text">Breaking firewalls and hearts since 2024</span>
+            </div>
+        </div>
+    </header>
 
     <!-- Bottom Floating Navigation -->
     <nav id="navbar" class="top-nav">
@@ -162,12 +189,16 @@
         <!-- About Section -->
         <section id="about" class="section-dark">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" style="text-align: center;">
                     <span class="section-number terminal-green">01.</span>
                     <h2 class="section-title">Cyber Persona</h2>
+                    <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
                 </div>
-
+                <p
+                    style="text-align: center; color: #fbbf24; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
+                    Aspiring Security Analyst | Cybersecurity Enthusiast
+                </p>
                 <div class="about-grid">
                     <div class="about-content">
                         <div class="threat-level-card cyber-border">
@@ -208,7 +239,7 @@
 
                     <div class="persona-stats-grid">
                         <div class="stat-card box-glow-cyan">
-                            <img src="https://github.com/eTac01.png" alt="Profile"
+                            <img src="assets/profile.webp" alt="Profile"
                                 style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 8px solid var(--accent-cyan);">
                         </div>
                         <div class="stat-card box-glow-green">
@@ -293,112 +324,72 @@
         <!-- Skills Section -->
         <section id="skills" class="section-light">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" style="text-align: center;">
                     <span class="section-number terminal-green">02.</span>
                     <h2 class="section-title">Arsenal & Capabilities</h2>
+                    <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
                 </div>
-
+                <p
+                    style="text-align: center; color: #fbbf24; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
+                    Technologies, tools and Security info. loaded into memory
+                </p>
                 <div class="skills-grid">
-                    <!-- Offensive Skills -->
+                    <!-- Security Tools -->
                     <div class="skill-category">
                         <div class="category-header">
-                            <i data-lucide="crosshair" class="category-icon"></i>
-                            <h3 class="glow-red">Offensive Security</h3>
+                            <i data-lucide="wrench" class="category-icon"></i>
+                            <h3 class="glow-green">Security Tools</h3>
                         </div>
                         <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Penetration Testing</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="95"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Malware Analysis</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="88"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Exploit Development</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="82"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Red Team Operations</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="90"></div>
-                                </div>
-                            </div>
+                            <div class="skill-tag">Wireshark</div>
+                            <div class="skill-tag">Nmap</div>
+                            <div class="skill-tag">Burp Suite</div>
+                            <div class="skill-tag">Nessus</div>
+                            <div class="skill-tag">Metasploit</div>
+                            <div class="skill-tag">SQLMap</div>
+                            <div class="skill-tag">Kali Linux</div>
                         </div>
                     </div>
 
-                    <!-- Defensive Skills -->
+                    <!-- Security Domains -->
                     <div class="skill-category">
                         <div class="category-header">
                             <i data-lucide="shield-check" class="category-icon"></i>
-                            <h3 class="glow-green">Defensive Security</h3>
+                            <h3 class="glow-cyan">Security Domains</h3>
                         </div>
                         <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">SOC Operations</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="92"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">SIEM Management</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="87"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Incident Response</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="94"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Threat Hunting</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="85"></div>
-                                </div>
-                            </div>
+                            <div class="skill-tag">Vulnerability Assessment</div>
+                            <div class="skill-tag">Penetration Testing</div>
+                            <div class="skill-tag">Web Application Security</div>
+                            <div class="skill-tag">Malware Analysis</div>
+                            <div class="skill-tag">Incident Response</div>
+                            <div class="skill-tag">Network Traffic Analysis</div>
                         </div>
                     </div>
 
-                    <!-- Cloud & DevSecOps -->
+                    <!-- Programming & Scripting -->
                     <div class="skill-category">
                         <div class="category-header">
-                            <i data-lucide="cloud" class="category-icon"></i>
-                            <h3 class="glow-cyan">Cloud & DevSecOps</h3>
+                            <i data-lucide="code" class="category-icon"></i>
+                            <h3 class="glow-red">Programming & Scripting</h3>
                         </div>
                         <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">AWS Security</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="80"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Container Security</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="78"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">CI/CD Security</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="83"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Infrastructure as Code</span>
-                                <div class="firewall-bar">
-                                    <div class="firewall-fill" data-skill="81"></div>
-                                </div>
-                            </div>
+                            <div class="skill-tag">Python (Security Automation, ML-based filtering)</div>
+                            <div class="skill-tag">Bash</div>
+                            <div class="skill-tag">PowerShell</div>
+                        </div>
+                    </div>
+
+                    <!-- Operating Systems -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i data-lucide="monitor" class="category-icon"></i>
+                            <h3 class="glow-cyan">Operating Systems</h3>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-tag">Linux (Kali, Ubuntu)</div>
+                            <div class="skill-tag">Windows</div>
                         </div>
                     </div>
                 </div>
@@ -408,12 +399,16 @@
         <!-- Work Experience Section -->
         <section id="experience" class="section-dark">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" style="text-align: center;">
                     <span class="section-number terminal-green">03.</span>
                     <h2 class="section-title">Mission History</h2>
+                    <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
                 </div>
-
+                <p
+                    style="text-align: center; color: #fbbf24; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
+                    Professional journey and contributions
+                </p>
                 <div class="projects-grid">
                     <div class="terminal-card" style="width: 100%;">
                         <div class="terminal-header">
@@ -450,12 +445,16 @@
         <!-- Projects Section -->
         <section id="projects" class="section-dark">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" style="text-align: center;">
                     <span class="section-number terminal-green">04.</span>
                     <h2 class="section-title">Security Operations</h2>
+                    <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
                 </div>
-
+                <p
+                    style="text-align: center; color: #fbbf24; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
+                    A showcase of executed and tools used in Security Operations.
+                </p>
                 <div style="text-align: center; margin-bottom: 2rem;">
                     <a href="projects.html"
                         style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #334155; color: #f1f5f9; text-decoration: none; border-radius: 0.375rem; font-weight: 500; border: 1px solid #475569; transition: all 0.3s ease;">
@@ -476,7 +475,7 @@
                             <span class="terminal-title">$ ./malware_classifier</span>
                         </div>
                         <div class="terminal-image-container">
-                            <img src="assets/malware_classifier.png" alt="Malware Classifier Interface"
+                            <img src="assets/malware_classifier.webp" alt="Malware Classifier Interface"
                                 class="terminal-preview-img">
                         </div>
                         <div class="terminal-body">
@@ -511,7 +510,7 @@
                             <span class="terminal-title">$ ./network_analyzer</span>
                         </div>
                         <div class="terminal-image-container">
-                            <img src="assets/network_analyzer.png" alt="Network Analyzer Interface"
+                            <img src="assets/network_analyzer.webp" alt="Network Analyzer Interface"
                                 class="terminal-preview-img">
                         </div>
                         <div class="terminal-body">
@@ -546,7 +545,7 @@
                             <span class="terminal-title">$ ./offline_ai_assistant</span>
                         </div>
                         <div class="terminal-image-container">
-                            <img src="assets/ai_project_preview.png" alt="Offline AI Security Assistant Interface"
+                            <img src="assets/ai_project_preview.webp" alt="Offline AI Security Assistant Interface"
                                 class="terminal-preview-img">
                         </div>
                         <div class="terminal-body">
@@ -581,7 +580,7 @@
                             <span class="terminal-title">$ ./log_analyzer</span>
                         </div>
                         <div class="terminal-image-container">
-                            <img src="assets/log_analyzer.png" alt="Log Analyzer Interface"
+                            <img src="assets/log_analyzer.webp" alt="Log Analyzer Interface"
                                 class="terminal-preview-img">
                         </div>
                         <div class="terminal-body">
@@ -615,7 +614,7 @@
                             <span class="terminal-title">$ ./phishing_detector</span>
                         </div>
                         <div class="terminal-image-container">
-                            <img src="assets/phishing_detection.png" alt="Phishing Detection Interface"
+                            <img src="assets/phishing_detection.webp" alt="Phishing Detection Interface"
                                 class="terminal-preview-img">
                         </div>
                         <div class="terminal-body">
@@ -649,7 +648,7 @@
                             <span class="terminal-title">$ ./vuln_scanner</span>
                         </div>
                         <div class="terminal-image-container">
-                            <img src="assets/vulnerability_scanner.png" alt="Vulnerability Scanner Interface"
+                            <img src="assets/vulnerability_scanner.webp" alt="Vulnerability Scanner Interface"
                                 class="terminal-preview-img">
                         </div>
                         <div class="terminal-body">
@@ -676,12 +675,17 @@
         <!-- Live Terminal Section -->
         <section id="terminal" class="section-light terminal-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" style="text-align: center;">
                     <span class="section-number terminal-green">05.</span>
                     <h2 class="section-title">Interactive Terminal</h2>
+                    <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
                 </div>
 
+                <p
+                    style="text-align: center; color: #fbdb24ea; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
+                    initializing core details... Type "resume" to view resume
+                </p>
                 <div class="live-terminal">
                     <div class="terminal-window">
                         <div class="terminal-header">
@@ -693,7 +697,7 @@
                             <span class="terminal-title">root@chudaraj:~#</span>
                         </div>
                         <div class="terminal-output" id="terminal-output">
-                            <p class="terminal-line terminal-green">Welcome to Chudaraj's Security Terminal
+                            <p class="terminal-line terminal-green">Welcome to eTac's Security Terminal
                             </p>
                             <p class="terminal-line">Type 'help' for available commands</p>
                             <p class="terminal-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
@@ -713,12 +717,16 @@
         <!-- Certifications Section -->
         <section id="certifications" class="section-dark">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" style="text-align: center;">
                     <span class="section-number terminal-green">06.</span>
                     <h2 class="section-title">Security Credentials</h2>
+                    <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
                 </div>
-
+                <p
+                    style="text-align: center; color: #fbbf24; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
+                    Initializing Security Credentials... and loading host information.
+                </p>
                 <div class="cert-grid">
                     <a href="cert_ceh.html" class="cert-link" title="View CEH Certificate">
                         <div class="cert-badge cyber-border">
@@ -770,54 +778,126 @@
         <!-- Contact Section -->
         <section id="contact" class="section-light">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" style="text-align: center;">
                     <span class="section-number terminal-green">07.</span>
                     <h2 class="section-title">Establish Secure Connection</h2>
+                    <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
                 </div>
+                <p
+                    style="text-align: center; color: #fbbf24; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
+                    Establish a secure connection channel
+                </p>
 
-                <div class="contact-container">
-                    <div class="encrypted-contact">
-                        <div class="encryption-status">
-                            <i data-lucide="lock" class="lock-icon glow-green"></i>
-                            <span class="terminal-green">End-to-End Encrypted</span>
+                <!-- Contact Grid Layout -->
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto;">
+
+                    <!-- Left: Transmission Coordinates -->
+                    <div
+                        style="padding: 2rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 0.5rem;">
+                        <h3
+                            style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1.5rem; font-family: 'Courier New', monospace;">
+                            Transmission Coordinates
+                        </h3>
+                        <p
+                            style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem;">
+                            I'm currently available for <span
+                                style="color: var(--terminal-green); font-weight: 600;">SOC Analyst positions</span> and
+                            <span style="color: var(--accent-cyan); font-weight: 600;">cybersecurity internships</span>.
+                            If you have an opportunity involving threat detection, incident response, or security
+                            operations,
+                            initiate a handshake protocol.
+                        </p>
+
+                        <div style="display: grid; gap: 1.5rem;">
+                            <!-- Email Protocol -->
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div
+                                    style="width: 45px; height: 45px; background: rgba(0, 255, 65, 0.1); border: 1px solid var(--terminal-green); border-radius: 0.375rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i data-lucide="mail"
+                                        style="width: 20px; height: 20px; color: var(--terminal-green);"></i>
+                                </div>
+                                <div>
+                                    <div
+                                        style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                                        EMAIL_PROTOCOL
+                                    </div>
+                                    <a href="mailto:chudarajkushwaha@gmail.com"
+                                        style="color: var(--accent-cyan); text-decoration: none; font-size: 1rem; font-weight: 500;">
+                                        chudarajkushwaha@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Location Data -->
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div
+                                    style="width: 45px; height: 45px; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--accent-cyan); border-radius: 0.375rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i data-lucide="map-pin"
+                                        style="width: 20px; height: 20px; color: var(--accent-cyan);"></i>
+                                </div>
+                                <div>
+                                    <div
+                                        style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                                        LOCATION_DATA
+                                    </div>
+                                    <div style="color: var(--text-primary); font-size: 1rem; font-weight: 500;">
+                                        India
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- GitHub -->
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div
+                                    style="width: 45px; height: 45px; background: rgba(147, 51, 234, 0.1); border: 1px solid #9333ea; border-radius: 0.375rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i data-lucide="github" style="width: 20px; height: 20px; color: #9333ea;"></i>
+                                </div>
+                                <div>
+                                    <div
+                                        style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                                        GITHUB_REPO
+                                    </div>
+                                    <a href="https://github.com/eTac01" target="_blank"
+                                        style="color: var(--accent-cyan); text-decoration: none; font-size: 1rem; font-weight: 500;">
+                                        github.com/eTac01
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Contact Form -->
+                    <div
+                        style="padding: 2rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 0.5rem;">
+                        <div class="encryption-status" style="margin-bottom: 1.5rem;">
+                            <i data-lucide="lock" class="lock-icon glow-red"></i>
+                            <span class="terminal-green">Encrypted Channel</span>
                         </div>
 
                         <form id="contact-form" class="contact-form">
                             <div class="form-group">
-                                <label class="terminal-green">[ENCRYPTED] Your Name</label>
-                                <input type="text" class="cyber-input" placeholder="Enter your name..." required>
+                                <label class="terminal-green" style="font-size: 0.875rem;">Name</label>
+                                <input type="text" class="cyber-input" placeholder="Your name" required
+                                    style="padding: 0.625rem; font-size: 0.9rem;">
                             </div>
                             <div class="form-group">
-                                <label class="terminal-green">[ENCRYPTED] Your Email</label>
-                                <input type="email" class="cyber-input" placeholder="your.email@domain.com" required>
+                                <label class="terminal-green" style="font-size: 0.875rem;">Email</label>
+                                <input type="email" class="cyber-input" placeholder="your.email@domain.com" required
+                                    style="padding: 0.625rem; font-size: 0.9rem;">
                             </div>
                             <div class="form-group">
-                                <label class="terminal-green">[ENCRYPTED] Message</label>
-                                <textarea class="cyber-input" rows="5" placeholder="Your encrypted message..."
-                                    required></textarea>
+                                <label class="terminal-green" style="font-size: 0.875rem;">Message</label>
+                                <textarea class="cyber-input" rows="4" placeholder="Your message..." required
+                                    style="padding: 0.625rem; font-size: 0.9rem;"></textarea>
                             </div>
-                            <button type="submit" class="btn-cyber btn-primary btn-full">
+                            <button type="submit" class="btn-cyber btn-primary btn-full"
+                                style="padding: 0.75rem 1.5rem; font-size: 0.95rem;">
                                 <i data-lucide="send"></i>
-                                <span>Send Encrypted Message</span>
+                                <span>Send Message</span>
                             </button>
                         </form>
-
-                        <div class="contact-links">
-                            <a href="mailto:ranchji806@gmail.com" class="contact-link">
-                                <i data-lucide="mail"></i>
-                                <span>ranchji806@gmail.com</span>
-                            </a>
-                            <a href="https://github.com/eTac01" target="_blank" class="contact-link">
-                                <i data-lucide="github"></i>
-                                <span>github.com/eTac01</span>
-                            </a>
-                            <a href="https://linkedin.com/in/chudaraj-kushwaha-39b189266/" target="_blank"
-                                class="contact-link">
-                                <i data-lucide="linkedin"></i>
-                                <span>LinkedIn Profile</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
