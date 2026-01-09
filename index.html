@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chudaraj Kushwaha - Elite Cybersecurity Professional</title>
+    <meta name="description" content="Offensive Security | Defensive Intelligence | Cyber Resilience">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.github.com;">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+
+<body>
+    <!-- Binary Rain Canvas Background -->
+    <canvas id="binary-rain" class="binary-canvas"></canvas>
+
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="logo-pulse">
+                <i data-lucide="shield" class="logo-icon-large"></i>
+            </div>
+            <div class="terminal-loader">
+                <p class="terminal-green">> Initializing secure connection...</p>
+                <p class="terminal-green">> Loading encryption modules...</p>
+                <p class="terminal-green">> System ready.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Floating Navigation -->
+    <nav id="navbar" class="top-nav">
+        <div class="top-nav-container">
+            <div class="nav-links">
+                <a href="#home" class="nav-item active" title="Home">
+                    <i data-lucide="home"></i>
+                </a>
+                <a href="#about" class="nav-item" title="About">
+                    <i data-lucide="user"></i>
+                </a>
+                <a href="#skills" class="nav-item" title="Skills">
+                    <i data-lucide="code"></i>
+                </a>
+                <a href="#projects" class="nav-item" title="Projects">
+                    <i data-lucide="folder-git-2"></i>
+                </a>
+                <a href="#terminal" class="nav-item" title="Terminal">
+                    <i data-lucide="terminal"></i>
+                </a>
+                <a href="#certifications" class="nav-item" title="Certifications">
+                    <i data-lucide="award"></i>
+                </a>
+                <a href="#contact" class="nav-item" title="Contact">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section with CIA Triad -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <!-- CIA Triad Visualization -->
+                <div class="cia-triad">
+                    <div class="cia-core">
+                        <i data-lucide="shield-check" class="core-icon"></i>
+                    </div>
+                    <div class="cia-node cia-confidentiality" data-node="C">
+                        <div class="node-content">
+                            <i data-lucide="lock"></i>
+                            <span class="node-label">Confidentiality</span>
+                        </div>
+                    </div>
+                    <div class="cia-node cia-integrity" data-node="I">
+                        <div class="node-content">
+                            <i data-lucide="shield"></i>
+                            <span class="node-label">Integrity</span>
+                        </div>
+                    </div>
+                    <div class="cia-node cia-availability" data-node="A">
+                        <div class="node-content">
+                            <i data-lucide="zap"></i>
+                            <span class="node-label">Availability</span>
+                        </div>
+                    </div>
+                    <svg class="cia-connections" viewBox="0 0 400 400">
+                        <line class="connection-line" x1="200" y1="200" x2="200" y2="80" />
+                        <line class="connection-line" x1="200" y1="200" x2="90" y2="280" />
+                        <line class="connection-line" x1="200" y1="200" x2="310" y2="280" />
+                    </svg>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="hero-content">
+                    <div class="terminal-intro">
+                        <span class="terminal-prompt">root@security:~$</span>
+                        <span id="typed-command" class="terminal-green"></span>
+                        <span class="cursor-blink">_</span>
+                    </div>
+
+                    <h1 class="hero-title glitch" data-text="CHUDARAJ KUSHWAHA">
+                        CHUDARAJ KUSHWAHA
+                    </h1>
+
+                    <h2 class="hero-subtitle">
+                        <span class="glow-cyan">Offensive Security</span> |
+                        <span class="glow-green">Defensive Intelligence</span> |
+                        <span class="glow-red">Cyber Resilience</span>
+                    </h2>
+
+                    <p class="hero-description decrypt-fade">
+                        Elite cybersecurity professional specializing in penetration testing,
+                        incident response, and security architecture. Committed to defending
+                        digital infrastructure against evolving threats.
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-value terminal-green" id="github-repos">
+                                <i data-lucide="loader" class="loading-icon"
+                                    style="width: 20px; height: 20px; animation: spin 1s linear infinite;"></i>
+                            </span>
+                            <span class="stat-label">GitHub Repositories</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value terminal-green" id="github-projects">
+                                <i data-lucide="loader" class="loading-icon"
+                                    style="width: 20px; height: 20px; animation: spin 1s linear infinite;"></i>
+                            </span>
+                            <span class="stat-label">Security Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value terminal-green" id="github-followers">
+                                <i data-lucide="loader" class="loading-icon"
+                                    style="width: 20px; height: 20px; animation: spin 1s linear infinite;"></i>
+                            </span>
+                            <span class="stat-label">GitHub Followers</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn-cyber btn-primary">
+                            <i data-lucide="mail"></i>
+                            <span>Initiate Contact</span>
+                        </a>
+                        <a href="#terminal" class="btn-cyber btn-secondary">
+                            <i data-lucide="terminal"></i>
+                            <span>Access Terminal</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number terminal-green">01.</span>
+                    <h2 class="section-title">Cyber Persona</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-content">
+                        <div class="threat-level-card cyber-border">
+                            <div class="threat-header">
+                                <span class="threat-indicator threat-low"></span>
+                                <span class="threat-label">Threat Detection Level</span>
+                            </div>
+                            <div class="threat-bar">
+                                <div class="threat-fill" data-level="92"></div>
+                                <span class="threat-percentage">92%</span>
+                            </div>
+                        </div>
+
+                        <p class="about-text">
+                            <span class="terminal-green">&gt;</span> Cybersecurity professional with expertise in
+                            <span class="highlight glow-cyan">offensive security</span> and
+                            <span class="highlight glow-green">defensive operations</span>.
+                        </p>
+                        <p class="about-text">
+                            <span class="terminal-green">&gt;</span> Specialized in penetration testing, malware
+                            analysis,
+                            and incident response. Active contributor to the security community through CTF competitions
+                            and vulnerability research.
+                        </p>
+                        <p class="about-text">
+                            <span class="terminal-green">&gt;</span> Committed to continuous learning and staying ahead
+                            of emerging threats in the ever-evolving cybersecurity landscape.
+                        </p>
+                    </div>
+
+                    <div class="persona-stats-grid">
+                        <div class="stat-card box-glow-cyan">
+                            <img src="https://github.com/eTac01.png" alt="Profile"
+                                style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 8px solid var(--accent-cyan);">
+                        </div>
+                        <div class="stat-card box-glow-green">
+                            <i data-lucide="eye" class="stat-icon"></i>
+                            <h3>Blue Team</h3>
+                            <p>Defensive & Monitoring</p>
+                        </div>
+                        <div class="stat-card box-glow-cyan">
+                            <i data-lucide="bug" class="stat-icon"></i>
+                            <h3>Malware Analysis</h3>
+                            <p>Threat Intelligence</p>
+                        </div>
+                        <div class="stat-card box-glow-green">
+                            <i data-lucide="cloud" class="stat-icon"></i>
+                            <h3>Cloud Security</h3>
+                            <p>DevSecOps Integration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number terminal-green">02.</span>
+                    <h2 class="section-title">Arsenal & Capabilities</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Offensive Skills -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i data-lucide="crosshair" class="category-icon"></i>
+                            <h3 class="glow-red">Offensive Security</h3>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Penetration Testing</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Malware Analysis</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Exploit Development</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="82"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Red Team Operations</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Defensive Skills -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i data-lucide="shield-check" class="category-icon"></i>
+                            <h3 class="glow-green">Defensive Security</h3>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">SOC Operations</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">SIEM Management</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="87"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Incident Response</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="94"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Threat Hunting</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cloud & DevSecOps -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i data-lucide="cloud" class="category-icon"></i>
+                            <h3 class="glow-cyan">Cloud & DevSecOps</h3>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">AWS Security</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Container Security</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="78"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">CI/CD Security</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="83"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Infrastructure as Code</span>
+                                <div class="firewall-bar">
+                                    <div class="firewall-fill" data-skill="81"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number terminal-green">03.</span>
+                    <h2 class="section-title">Security Operations</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./malware_classifier</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Analyzing threat
+                                vectors...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> 1,247 malware samples
+                                detected</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Detection coverage: <span
+                                    class="glow-green">94.3%</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> VirusTotal API integration
+                                active</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">VirusTotal API</span>
+                            <span class="tech-tag">Threat Intel</span>
+                            <a href="https://github.com/eTac01/Malware-File-Classification-Batch-10"
+                                class="project-link" target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./network_analyzer</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Initializing TOR
+                                network...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> IP rotation
+                                successful</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Identifying threats and
+                                bottlenecks <span class="glow-green">HIGH</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Continuous packet capture
+                                enabled
+                            </p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">Network Security</span>
+                            <a href="https://github.com/eTac01/Network-analysis-using-wireshark" class="project-link"
+                                target="_blank">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">$ ./vuln_scanner</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Scanning web
+                                application...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> SQL injection vectors
+                                found: 3</p>
+                            <p class="terminal-line warning"><span class="terminal-amber">!</span> XSS vulnerabilities:
+                                2</p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Generating report...</p>
+                        </div>
+                        <div class="project-footer">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Web Security</span>
+                            <span class="tech-tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Terminal Section -->
+        <section id="terminal" class="section-light terminal-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number terminal-green">04.</span>
+                    <h2 class="section-title">Interactive Terminal</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="live-terminal">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">root@chudaraj:~#</span>
+                        </div>
+                        <div class="terminal-output" id="terminal-output">
+                            <p class="terminal-line terminal-green">Welcome to Chudaraj's Security Terminal</p>
+                            <p class="terminal-line">Type 'help' for available commands</p>
+                            <p class="terminal-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+                        </div>
+                        <div class="terminal-input-line">
+                            <span class="terminal-prompt terminal-green">$</span>
+                            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off"
+                                spellcheck="false">
+                            <span class="cursor-blink terminal-green">_</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number terminal-green">05.</span>
+                    <h2 class="section-title">Security Credentials</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="cert-grid">
+                    <a href="cert_ceh.html" class="cert-link" title="View CEH Certificate">
+                        <div class="cert-badge cyber-border">
+                            <div class="badge-icon box-glow-cyan">
+                                <i data-lucide="award"></i>
+                            </div>
+                            <h3 class="cert-title">Certified Ethical Hacker</h3>
+                            <p class="cert-issuer">EC-Council</p>
+                            <span class="cert-status in-progress">In Progress</span>
+                        </div>
+                    </a>
+
+                    <a href="cert_thm.html" class="cert-link" title="View THM Profile">
+                        <div class="cert-badge cyber-border">
+                            <div class="badge-icon box-glow-green">
+                                <i data-lucide="shield-check"></i>
+                            </div>
+                            <h3 class="cert-title">TryHackMe Certifications</h3>
+                            <p class="cert-issuer">TryHackMe</p>
+                            <span class="cert-status completed">Completed</span>
+                        </div>
+                    </a>
+
+                    <a href="cert_ibm.html" class="cert-link" title="View IBM Certificate">
+                        <div class="cert-badge cyber-border">
+                            <div class="badge-icon box-glow-cyan">
+                                <i data-lucide="lock"></i>
+                            </div>
+                            <h3 class="cert-title">Cybersecurity Fundamentals</h3>
+                            <p class="cert-issuer">IBM</p>
+                            <span class="cert-status completed">Completed</span>
+                        </div>
+                    </a>
+
+                    <a href="cert_udemy.html" class="cert-link" title="View Udemy Certificate">
+                        <div class="cert-badge cyber-border">
+                            <div class="badge-icon box-glow-green">
+                                <i data-lucide="code"></i>
+                            </div>
+                            <h3 class="cert-title">Python for Security</h3>
+                            <p class="cert-issuer">Udemy</p>
+                            <span class="cert-status completed">Completed</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number terminal-green">06.</span>
+                    <h2 class="section-title">Establish Secure Connection</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="contact-container">
+                    <div class="encrypted-contact">
+                        <div class="encryption-status">
+                            <i data-lucide="lock" class="lock-icon glow-green"></i>
+                            <span class="terminal-green">End-to-End Encrypted</span>
+                        </div>
+
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label class="terminal-green">[ENCRYPTED] Your Name</label>
+                                <input type="text" class="cyber-input" placeholder="Enter your name..." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="terminal-green">[ENCRYPTED] Your Email</label>
+                                <input type="email" class="cyber-input" placeholder="your.email@domain.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="terminal-green">[ENCRYPTED] Message</label>
+                                <textarea class="cyber-input" rows="5" placeholder="Your encrypted message..."
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn-cyber btn-primary btn-full">
+                                <i data-lucide="send"></i>
+                                <span>Send Encrypted Message</span>
+                            </button>
+                        </form>
+
+                        <div class="contact-links">
+                            <a href="mailto:ranchji806@gmail.com" class="contact-link">
+                                <i data-lucide="mail"></i>
+                                <span>ranchji806@gmail.com</span>
+                            </a>
+                            <a href="https://github.com/eTac01" target="_blank" class="contact-link">
+                                <i data-lucide="github"></i>
+                                <span>github.com/eTac01</span>
+                            </a>
+                            <a href="https://linkedin.com/in/chudaraj-kushwaha-39b189266/" target="_blank"
+                                class="contact-link">
+                                <i data-lucide="linkedin"></i>
+                                <span>LinkedIn Profile</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="cyber-footer">
+        <p class="terminal-green">root@chudaraj:~$ <span class="glow-cyan">whoami</span></p>
+        <p>Designed & Secured by <span class="highlight glow-green">Chudaraj Kushwaha</span></p>
+        <p class="copyright">© 2026 All rights reserved | Built with security-first mindset</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
