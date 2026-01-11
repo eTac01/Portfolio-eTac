@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications | Chudaraj Kushwaha</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        body {
+            padding-top: 100px;
+        }
+
+        .certifications-page {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .cert-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cert-card-detailed {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card-detailed:hover {
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        .cert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .cert-title-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cert-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 240, 255, 0.1);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 10px;
+        }
+
+        .cert-info h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-issuer {
+            color: var(--terminal-green);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .cert-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .cert-status.completed {
+            background: rgba(0, 255, 65, 0.2);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+        }
+
+        .cert-status.in-progress {
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--terminal-amber);
+            border: 1px solid var(--terminal-amber);
+        }
+
+        .cert-preview {
+            background: #111;
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+            font-family: 'Courier New', monospace;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .cert-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .internship-section {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            padding: 2rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid var(--accent-green);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .internship-section h2 {
+            color: var(--accent-green);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .internship-section p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .back-btn-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Certificate Image Preview in Compact Cards */
+        .cert-image-preview {
+            width: 100%;
+            height: 150px;
+            background: #0a0a0a;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .cert-image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .terminal-card:hover .cert-image-preview img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .terminal-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .terminal-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Modal Styles */
+        .cert-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .cert-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 10px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff5f56;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 0, 0, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-issuer {
+            color: var(--terminal-green);
+            font-family: 'Courier New', monospace;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-cert-image {
+            width: 100%;
+            background: #0a0a0a;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-cert-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .modal-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        @media (max-width: 768px) {
+            .cert-header {
+                flex-direction: column;
+            }
+
+            .cert-actions {
+                justify-content: flex-start;
+            }
+
+            .modal-content {
+                margin: 1rem;
+            }
+
+            .cert-modal {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Binary Rain Canvas Background -->
+    <canvas id="binary-rain" class="binary-canvas"></canvas>
+
+    <!-- Fixed Header Bar -->
+    <header class="header-bar">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="assets/etac_logo.webp" alt="eTac" class="logo-img">
+            </div>
+            <div class="header-tagline">
+                <span class="tagline-text">Breaking firewalls and hearts since 2024</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="certifications-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title glitch" data-text="SECURITY CREDENTIALS">SECURITY CREDENTIALS</h1>
+                <p class="page-subtitle terminal-green">$ cat certifications.log | grep -i "achievements"</p>
+            </div>
+
+            <div class="filter-container"
+                style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <button class="btn-cyber btn-secondary filter-btn" onclick="filterCerts('security', this)">
+                    <i data-lucide="shield"></i> Security Certification
+                </button>
+                <button class="btn-cyber btn-secondary filter-btn" onclick="filterCerts('general', this)">
+                    <i data-lucide="layers"></i> General Certification
+                </button>
+                <button class="btn-cyber btn-secondary filter-btn" onclick="filterCerts('internship', this)">
+                    <i data-lucide="briefcase"></i> Internship Certification
+                </button>
+            </div>
+
+            <div class="cert-container"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <!-- HTB-CTF Certificate -->
+                <div class="terminal-card" id="htb-ctf" data-category="security" style="display: none;"
+                    onclick="openCertModal('HTB-CTF', 'Hack The Box', 'assets/Certificates/cert_htb_ctf.jpg', 'This certification validates skills in penetration testing, footprinting, and ethical hacking methodologies. It covers the latest tools and techniques used by malicious hackers and information security professionals alike.')">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./htb_ctf</span>
+                    </div>
+                    <div class="cert-image-preview">
+                        <img src="assets/Certificates/cert_htb_ctf.jpg" alt="HTB-CTF Certificate">
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 240, 255, 0.1); border: 2px solid var(--accent-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="award"
+                                    style="width: 24px; height: 24px; color: var(--accent-cyan);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin: 0;">HTB-CTF</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0;">Hack The Box</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">This certification validates skills in penetration testing,
+                            footprinting, and ethical hacking methodologies.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">CTF</span>
+                        <span class="tech-tag">Penetration Testing</span>
+                        <a href="#" class="project-link" onclick="event.stopPropagation();">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CISCO Certificate -->
+                <div class="terminal-card" id="cisco" data-category="security" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./cisco_cert</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 240, 255, 0.1); border: 2px solid var(--accent-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="lock" style="width: 24px; height: 24px; color: var(--accent-cyan);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin: 0;">Cisco Cybersecurity
+                                </h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0;">Cisco</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Foundation in cybersecurity principles, threat intelligence, and
+                            network defense strategies.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Cisco</span>
+                        <span class="tech-tag">Network Security</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ICIP Certificate -->
+                <div class="terminal-card" id="icip" data-category="security" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./icip_cert</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 240, 255, 0.1); border: 2px solid var(--accent-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="shield"
+                                    style="width: 24px; height: 24px; color: var(--accent-cyan);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin: 0;">Certified in
+                                    Cybersecurity</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0;">ICIP</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Foundational certification covering security principles, business
+                            continuity, and incident response.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Security Principles</span>
+                        <span class="tech-tag">Incident Response</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Security Blue Team Certificate -->
+                <div class="terminal-card" id="sbt" data-category="security" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./sbt_cert</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 240, 255, 0.1); border: 2px solid var(--accent-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="activity"
+                                    style="width: 24px; height: 24px; color: var(--accent-cyan);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin: 0;">Security Blue Team
+                                </h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0;">Security Blue
+                                    Team</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Practical defensive security certification focusing on network
+                            analysis, threat hunting, and digital forensics.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Defensive Security</span>
+                        <span class="tech-tag">Threat Hunting</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Secure Networking Certificate -->
+                <div class="terminal-card" id="sec-net" data-category="security" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./secure_network</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 240, 255, 0.1); border: 2px solid var(--accent-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="network"
+                                    style="width: 24px; height: 24px; color: var(--accent-cyan);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin: 0;">Secure Networking
+                                </h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0;">L&T</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Advanced training in securing network infrastructures, firewalls, and
+                            implementing secure communication protocols.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Network Security</span>
+                        <span class="tech-tag">Firewalls</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Python for Security Certificate -->
+                <div class="terminal-card" id="udemy" data-category="general" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./python_security</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 255, 65, 0.1); border: 2px solid var(--terminal-green); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="code"
+                                    style="width: 24px; height: 24px; color: var(--terminal-green);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--terminal-green); font-size: 1.1rem; margin: 0;">Python for
+                                    Security</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0; opacity: 0.8;">
+                                    Udemy</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Practical course on using Python for cybersecurity tasks, developing
+                            custom tools, and automating security assessments.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Security Automation</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Linux Security Administration Certificate -->
+                <div class="terminal-card" id="linux-admin" data-category="security" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./linux_security</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 240, 255, 0.1); border: 2px solid var(--accent-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="shield-check"
+                                    style="width: 24px; height: 24px; color: var(--accent-cyan);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin: 0;">Linux Security
+                                    Admin</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0;">L&T EduTech</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Linux system administration with emphasis on security hardening, secure
+                            shell scripting, and firewall configuration.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">System Hardening</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Elevate Labs Internship Certificate -->
+                <div class="terminal-card" id="elevate" data-category="internship" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./elevate_intern</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 255, 65, 0.1); border: 2px solid var(--terminal-green); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="shield"
+                                    style="width: 24px; height: 24px; color: var(--terminal-green);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--terminal-green); font-size: 1.1rem; margin: 0;">Cyber Security
+                                    Intern</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0; opacity: 0.8;">
+                                    Elevate Labs | Oct-Dec 2025</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Comprehensive cybersecurity internship with hands-on experience in
+                            security operations, vulnerability assessment, and incident response.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Security Operations</span>
+                        <span class="tech-tag">Vulnerability Assessment</span>
+                        <a href="cert_internship.html" class="project-link">
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- IIDT-Blackbucks Internship Certificate -->
+                <div class="terminal-card" id="blackbucks" data-category="internship" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./blackbucks_intern</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 255, 65, 0.1); border: 2px solid var(--terminal-green); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="briefcase"
+                                    style="width: 24px; height: 24px; color: var(--terminal-green);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--terminal-green); font-size: 1.1rem; margin: 0;">IIDT -
+                                    Blackbucks Intern</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0; opacity: 0.8;">
+                                    IIDT - Blackbucks | May-Jul 2024</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Internship focusing on security incident monitoring, vulnerability
+                            assessments, and security controls implementation.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Incident Monitoring</span>
+                        <span class="tech-tag">Vulnerability Assessment</span>
+                        <a href="cert_internship.html" class="project-link">
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Internship Certification Section -->
+            <div class="internship-section">
+                <h2><i data-lucide="briefcase" style="width: 30px; height: 30px; vertical-align: middle;"></i>
+                    Internship Certifications</h2>
+                <p class="terminal-green">View my professional internship certifications and experience letters</p>
+                <a href="cert_internship.html" class="btn-cyber btn-primary" style="display: inline-flex;">
+                    <i data-lucide="file-badge"></i>
+                    <span>View Internship Certifications</span>
+                </a>
+            </div>
+
+            <!-- Back Button -->
+            <div class="back-btn-container">
+                <a href="index.html#certifications" class="btn-cyber btn-secondary">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Certificate Detail Modal -->
+        <div id="certModal" class="cert-modal">
+            <div class="modal-content">
+                <div class="modal-close" onclick="closeCertModal()">
+                    <i data-lucide="x" style="width: 24px; height: 24px; color: #ff5f56;"></i>
+                </div>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <p class="modal-issuer" id="modalIssuer"></p>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-cert-image" id="modalImageContainer">
+                        <img id="modalImage" src="" alt="Certificate">
+                    </div>
+                    <div class="modal-description" id="modalDescription"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="cyber-footer">
+        <p class="terminal-green">root@chudaraj:~$ <span class="glow-cyan">whoami</span></p>
+        <p>Designed & Secured by <span class="highlight glow-green">Chudaraj Kushwaha</span></p>
+        <p class="copyright">© 2026 All rights reserved | Built with security-first mindset</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Certificate data with images and descriptions
+        const certData = {
+            'htb-ctf': {
+                title: 'HTB-CTF',
+                issuer: 'Hack The Box',
+                image: 'assets/Certificates/cert_htb_ctf.jpg',
+                description: 'This certification validates skills in penetration testing, footprinting, and ethical hacking methodologies. It covers the latest tools and techniques used by malicious hackers and information security professionals alike.'
+            },
+            'cisco': {
+                title: 'Cisco Cybersecurity Fundamentals',
+                issuer: 'Cisco',
+                image: 'assets/Certificates/cert_cisco.jpg',
+                description: 'Comprehensive foundation in cybersecurity principles, threat intelligence, and network defense strategies. Focuses on core security concepts, risk management, and security architecture.'
+            },
+            'icip': {
+                title: 'Certified in Cybersecurity (CC)',
+                issuer: 'ICIP',
+                image: 'assets/Certificates/cert_icip.jpg',
+                description: 'Foundational certification covering security principles, business continuity, disaster recovery, and incident response concepts.'
+            },
+            'sbt': {
+                title: 'Security Blue Team',
+                issuer: 'Security Blue Team',
+                image: 'assets/Certificates/cert_sbt.jpg',
+                description: 'Practical defensive security certification focusing on network analysis, threat hunting, and digital forensics.'
+            },
+            'sec-net': {
+                title: 'Secure Networking',
+                issuer: 'L&T',
+                image: 'assets/Certificates/cert_secure_networking.jpg',
+                description: 'Advanced training in securing network infrastructures, firewalls, and implementing secure communication protocols.'
+            },
+            'udemy': {
+                title: 'Python for Security',
+                issuer: 'Udemy',
+                image: 'assets/Certificates/cert_python_security.jpg',
+                description: 'Practical course on using Python for cybersecurity tasks, including developing custom tools, automating security assessments, and analyzing malware.'
+            },
+            'linux-admin': {
+                title: 'Linux Security Administration',
+                issuer: 'L&T EduTech',
+                image: 'assets/Certificates/cert_linux_admin.jpg',
+                description: 'Comprehensive training in Linux system administration with emphasis on security hardening, secure shell scripting, user privilege management, firewall configuration, and implementing security best practices for enterprise Linux environments.'
+            },
+            'elevate': {
+                title: 'Cyber Security Intern',
+                issuer: 'Elevate Labs (October 2025 – December 2025)',
+                image: 'assets/internship/elevate.jpg',
+                description: 'This certification recognizes successful completion of a comprehensive cybersecurity internship program at Elevate Labs, where I gained hands-on experience in security operations, vulnerability assessment, and incident response.'
+            },
+            'blackbucks': {
+                title: 'IIDT - Blackbucks Intern',
+                issuer: 'IIDT - Blackbucks (May 2024 – July 2024)',
+                image: 'assets/internship/blackbuck.jpg',
+                description: 'This certification acknowledges the successful completion of an internship program at IIDT - Blackbucks, focusing on security incident monitoring, vulnerability assessments, and security controls implementation.'
+            }
+        };
+
+        // Initialize certificates with images and click handlers
+        document.addEventListener('DOMContentLoaded', function () {
+            Object.keys(certData).forEach(certId => {
+                const card = document.getElementById(certId);
+                if (card) {
+                    const data = certData[certId];
+
+                    // Add image preview after terminal-header
+                    const header = card.querySelector('.terminal-header');
+                    if (header && !card.querySelector('.cert-image-preview')) {
+                        const imageDiv = document.createElement('div');
+                        imageDiv.className = 'cert-image-preview';
+                        imageDiv.innerHTML = `<img src="${data.image}" alt="${data.title} Certificate">`;
+                        header.after(imageDiv);
+                    }
+
+                    // Add onclick handler
+                    card.onclick = function () {
+                        openCertModal(data.title, data.issuer, data.image, data.description);
+                    };
+
+                    // Prevent link clicks from triggering modal
+                    const links = card.querySelectorAll('a');
+                    links.forEach(link => {
+                        link.onclick = function (e) {
+                            e.stopPropagation();
+                        };
+                    });
+                }
+            });
+        });
+
+        lucide.createIcons();
+
+        function filterCerts(category, btn) {
+            // Update active button state
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active', 'btn-primary');
+                b.classList.add('btn-secondary');
+            });
+            btn.classList.remove('btn-secondary');
+            btn.classList.add('active', 'btn-primary');
+
+            // Filter certs - using the new .terminal-card class
+            const certs = document.querySelectorAll('.terminal-card');
+            certs.forEach(cert => {
+                const certCategory = cert.getAttribute('data-category');
+                if (certCategory === category) {
+                    cert.style.display = 'block';
+                    // Add animation
+                    cert.animate([
+                        { opacity: 0, transform: 'translateY(20px)' },
+                        { opacity: 1, transform: 'translateY(0)' }
+                    ], {
+                        duration: 300,
+                        easing: 'ease-out'
+                    });
+                } else {
+                    cert.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal functions
+        function openCertModal(title, issuer, imageSrc, description) {
+            const modal = document.getElementById('certModal');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalIssuer').textContent = 'Issuer: ' + issuer;
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('modalDescription').textContent = description;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+            // Reinitialize lucide icons in modal
+            setTimeout(() => lucide.createIcons(), 100);
+        }
+
+        function closeCertModal() {
+            const modal = document.getElementById('certModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function (event) {
+            const modal = document.getElementById('certModal');
+            if (event.target === modal) {
+                closeCertModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeCertModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

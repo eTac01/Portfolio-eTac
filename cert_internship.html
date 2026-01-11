@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Certifications | Chudaraj Kushwaha</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        body {
+            padding-top: 100px;
+        }
+
+        .internship-page {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .internship-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .internship-card {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+        }
+
+        .internship-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .internship-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid var(--terminal-green);
+            border-radius: 50%;
+        }
+
+        .internship-title-group h2 {
+            color: var(--accent-cyan);
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .internship-duration {
+            color: var(--terminal-green);
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .cert-image-container {
+            width: 100%;
+            background: #1a1a1a;
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cert-placeholder {
+            color: var(--text-secondary);
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+
+        .cert-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 1.5rem 0;
+        }
+
+        .cert-highlights {
+            background: rgba(0, 240, 255, 0.05);
+            border-left: 3px solid var(--accent-cyan);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .cert-highlights h4 {
+            color: var(--terminal-green);
+            margin-bottom: 0.75rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .cert-highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cert-highlights li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cert-highlights li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--terminal-green);
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .internship-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Binary Rain Canvas Background -->
+    <canvas id="binary-rain" class="binary-canvas"></canvas>
+
+    <!-- Fixed Header Bar -->
+    <header class="header-bar">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="assets/etac_logo.webp" alt="eTac" class="logo-img">
+            </div>
+            <div class="header-tagline">
+                <span class="tagline-text">Breaking firewalls and hearts since 2024</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="internship-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title glitch" data-text="INTERNSHIP CERTIFICATIONS">INTERNSHIP CERTIFICATIONS</h1>
+                <p class="terminal-green" style="font-family: 'Courier New', monospace;">$ cat experience.log | grep -i
+                    "internship"</p>
+                <!-- Back Button -->
+                <div style="margin-top: 1.5rem;">
+                    <a href="certifications.html" class="btn-cyber btn-secondary">
+                        <i data-lucide="arrow-left"></i>
+                        <span>Back to Certifications</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="internship-container">
+                <!-- Elevate Labs Internship -->
+                <div class="internship-card">
+                    <div class="internship-header">
+                        <div class="internship-icon">
+                            <i data-lucide="shield"
+                                style="width: 30px; height: 30px; color: var(--terminal-green);"></i>
+                        </div>
+                        <div class="internship-title-group">
+                            <h2>Cyber Security Intern</h2>
+                            <p class="internship-duration">Elevate Labs | October 2025 – December 2025</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-image-container" style="padding: 0; overflow: hidden; border: none;">
+                        <img src="assets/internship/elevate.jpg" alt="Elevate Labs Certificate"
+                            style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="cert-description">
+                        <p>This certification recognizes successful completion of a comprehensive cybersecurity
+                            internship program at Elevate Labs, where I gained hands-on experience in security
+                            operations, vulnerability assessment, and incident response.</p>
+                    </div>
+
+                    <div class="details-toggle-container" style="text-align: center; margin-top: 1rem;">
+                        <button class="btn-cyber btn-secondary btn-sm" onclick="toggleDetails('elevate-details', this)">
+                            <i data-lucide="chevron-down"></i> View Details
+                        </button>
+                    </div>
+
+                    <div id="elevate-details" class="details-content" style="display: none; margin-top: 1.5rem;">
+                        <div class="cert-highlights">
+                            <h4><i data-lucide="award" style="width: 18px; height: 18px; vertical-align: middle;"></i>
+                                Key
+                                Achievements:</h4>
+                            <ul>
+                                <li>Performed basic vulnerability identification and security assessments</li>
+                                <li>Analyzed network traffic to identify suspicious activity</li>
+                                <li>Assisted in malware and file analysis using static inspection techniques</li>
+                                <li>Practiced SOC-style incident observation and log analysis fundamentals</li>
+                                <li>Worked with common security tools in Linux-based environments</li>
+                                <li>Recognized as Best Performer for analytical skills and professionalism</li>
+                            </ul>
+                        </div>
+
+                        <div class="cert-highlights" style="border-left-color: var(--terminal-green);">
+                            <h4><i data-lucide="wrench" style="width: 18px; height: 18px; vertical-align: middle;"></i>
+                                Tools & Technologies:</h4>
+                            <ul>
+                                <li>Kali Linux</li>
+                                <li>Wireshark</li>
+                                <li>Nmap</li>
+                                <li>Burp Suite</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IIDT-Blackbucks Internship -->
+                <div class="internship-card" style="border-color: var(--terminal-green);">
+                    <div class="internship-header">
+                        <div class="internship-icon"
+                            style="border-color: var(--accent-cyan); background: rgba(0, 240, 255, 0.1);">
+                            <i data-lucide="briefcase"
+                                style="width: 30px; height: 30px; color: var(--accent-cyan);"></i>
+                        </div>
+                        <div class="internship-title-group">
+                            <h2>IIDT - Blackbucks Intern</h2>
+                            <p class="internship-duration">IIDT - Blackbucks | May 2024 – July 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-image-container" style="padding: 0; overflow: hidden; border: none;">
+                        <img src="assets/internship/blackbuck.jpg" alt="Blackbucks Internship Certificate"
+                            style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="cert-description">
+                        <p>This certification acknowledges the successful completion of an internship program at IIDT -
+                            Blackbucks, focusing on security incident monitoring, vulnerability assessments, and
+                            security controls implementation.</p>
+                    </div>
+
+                    <div class="details-toggle-container" style="text-align: center; margin-top: 1rem;">
+                        <button class="btn-cyber btn-secondary btn-sm"
+                            onclick="toggleDetails('blackbucks-details', this)">
+                            <i data-lucide="chevron-down"></i> View Details
+                        </button>
+                    </div>
+
+                    <div id="blackbucks-details" class="details-content" style="display: none; margin-top: 1.5rem;">
+                        <div class="cert-highlights">
+                            <h4><i data-lucide="award" style="width: 18px; height: 18px; vertical-align: middle;"></i>
+                                Key
+                                Achievements:</h4>
+                            <ul>
+                                <li>Experienced monitoring and managing security incidents</li>
+                                <li>Performed vulnerability assessments</li>
+                                <li>Implemented security controls</li>
+                                <li>Conducted simulated SQL Injection attacks to identify vulnerabilities within web
+                                    applications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="certifications.html" class="btn-cyber btn-secondary">
+                        <i data-lucide="arrow-left"></i>
+                        <span>Back to Certifications</span>
+                    </a>
+                    <a href="index.html#experience" class="btn-cyber btn-primary">
+                        <i data-lucide="briefcase"></i>
+                        <span>View Experience</span>
+                    </a>
+                    <a href="resume.html" class="btn-cyber btn-primary">
+                        <i data-lucide="file-text"></i>
+                        <span>View Resume</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="cyber-footer">
+        <p class="terminal-green">root@chudaraj:~$ <span class="glow-cyan">whoami</span></p>
+        <p>Designed & Secured by <span class="highlight glow-green">Chudaraj Kushwaha</span></p>
+        <p class="copyright">© 2026 All rights reserved | Built with security-first mindset</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        function toggleDetails(elementId, button) {
+            const content = document.getElementById(elementId);
+            const icon = button.querySelector('i');
+
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                button.innerHTML = '<i data-lucide="chevron-up"></i> Hide Details';
+                button.classList.add('active'); // Optional: Add active style
+            } else {
+                content.style.display = "none";
+                button.innerHTML = '<i data-lucide="chevron-down"></i> View Details';
+                button.classList.remove('active');
+            }
+            lucide.createIcons();
+        }
+    </script>
+</body>
+
+</html>

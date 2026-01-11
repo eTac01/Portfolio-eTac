@@ -26,6 +26,137 @@
 
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        /* Credentials Dashboard Styles */
+        .cred-dashboard-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cred-dashboard-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--terminal-green), transparent);
+        }
+
+        .cred-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .cred-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Live Stats Panel */
+        .cred-stats-panel {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .stat-val {
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Interactive Mini Cards */
+        .mini-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .mini-cert-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+        }
+
+        .mini-cert-card:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.15);
+        }
+
+        .mini-cert-icon {
+            margin-bottom: 0.5rem;
+        }
+
+        .mini-cert-title {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .mini-cert-issuer {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .mini-cert-status {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-active {
+            background-color: var(--terminal-green);
+            box-shadow: 0 0 5px var(--terminal-green);
+        }
+
+        .status-pending {
+            background-color: var(--terminal-amber);
+            box-shadow: 0 0 5px var(--terminal-amber);
+        }
+    </style>
 </head>
 
 <body>
@@ -342,12 +473,10 @@
                             <h3 class="glow-green">Security Tools</h3>
                         </div>
                         <div class="skill-list">
-                            <div class="skill-tag">Wireshark</div>
-                            <div class="skill-tag">Nmap</div>
+                            <div class="skill-tag">AI</div>
                             <div class="skill-tag">Burp Suite</div>
                             <div class="skill-tag">Nessus</div>
                             <div class="skill-tag">Metasploit</div>
-                            <div class="skill-tag">SQLMap</div>
                             <div class="skill-tag">Kali Linux</div>
                         </div>
                     </div>
@@ -360,10 +489,8 @@
                         </div>
                         <div class="skill-list">
                             <div class="skill-tag">Vulnerability Assessment</div>
-                            <div class="skill-tag">Penetration Testing</div>
                             <div class="skill-tag">Web Application Security</div>
                             <div class="skill-tag">Malware Analysis</div>
-                            <div class="skill-tag">Incident Response</div>
                             <div class="skill-tag">Network Traffic Analysis</div>
                         </div>
                     </div>
@@ -409,7 +536,51 @@
                     style="text-align: center; color: #fbbf24; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
                     Professional journey and contributions
                 </p>
-                <div class="projects-grid">
+                <div class="experience-timeline">
+                    <!-- Elevate Labs Internship -->
+                    <div class="terminal-card" style="width: 100%;">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">role@Elevate-Labs:~$ ./view_log.sh</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div
+                                style="display: flex; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
+                                <span class="glow-cyan" style="font-weight: bold; font-size: 1.2rem;">Cyber Security
+                                    Intern</span>
+                                <span class="terminal-green">10/2025 – 12/2025</span>
+                            </div>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Initiating role summary...
+                            </p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> <span
+                                    class="text-secondary">Performed basic vulnerability identification and security
+                                    assessments.</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Executing analysis...</p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> <span
+                                    class="text-secondary">Analyzed network traffic to identify suspicious
+                                    activity.</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> <span
+                                    class="text-secondary">Assisted in malware and file analysis using static inspection
+                                    techniques.</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> <span
+                                    class="text-secondary">Practiced SOC-style incident observation and log analysis
+                                    fundamentals.</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> <span
+                                    class="text-secondary">Worked with common security tools in Linux-based
+                                    environments.</span></p>
+                            <p class="terminal-line success"><span class="terminal-green">✓</span> <span
+                                    class="glow-cyan">Recognized as Best Performer for analytical skills and
+                                    professionalism.</span></p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Tools: <span
+                                    class="glow-green">Kali Linux, Wireshark, Nmap, Burp Suite</span></p>
+                        </div>
+                    </div>
+
+                    <!-- IIDT-Blackbucks Internship -->
                     <div class="terminal-card" style="width: 100%;">
                         <div class="terminal-header">
                             <div class="terminal-controls">
@@ -422,16 +593,20 @@
                         <div class="terminal-body">
                             <div
                                 style="display: flex; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
-                                <span class="glow-cyan" style="font-weight: bold; font-size: 1.2rem;">IIDT - Blackbucks
+                                <span class="glow-cyan" style="font-weight: bold; font-size: 1.2rem;">IIDT -
+                                    Blackbucks
                                     Intern</span>
                                 <span class="terminal-green">05/2024 – 07/2024</span>
                             </div>
-                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Initiating role summary...
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Initiating role
+                                summary...
                             </p>
                             <p class="terminal-line"><span class="terminal-green">&gt;</span> <span
                                     class="text-secondary">Experienced monitoring and managing security incidents,
-                                    performing vulnerability assessments, and implementing security controls.</span></p>
-                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Executing simulation...
+                                    performing vulnerability assessments, and implementing security controls.</span>
+                            </p>
+                            <p class="terminal-line"><span class="terminal-green">&gt;</span> Executing
+                                simulation...
                             </p>
                             <p class="terminal-line success"><span class="terminal-green">✓</span> <span
                                     class="text-secondary">Conducted simulated SQL Injection attacks to identify
@@ -714,63 +889,154 @@
         </section>
 
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="section-dark">
+        <!-- Achievements Section -->
+        <section id="achievements" class="section-light">
             <div class="container">
                 <div class="section-header" style="text-align: center;">
                     <span class="section-number terminal-green">06.</span>
-                    <h2 class="section-title">Security Credentials</h2>
+                    <h2 class="section-title">Achievements</h2>
                     <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
                 </div>
                 <p
                     style="text-align: center; color: #fbbf24; font-family: 'Courier New', monospace; font-size: 0.95rem; margin-top: 0rem; margin-bottom: 2.5rem;">
-                    Initializing Security Credentials... and loading host information.
+                    Competitive hacking milestones and recognition
                 </p>
-                <div class="cert-grid">
-                    <a href="cert_ceh.html" class="cert-link" title="View CEH Certificate">
-                        <div class="cert-badge cyber-border">
-                            <div class="badge-icon box-glow-cyan">
-                                <i data-lucide="award"></i>
-                            </div>
-                            <h3 class="cert-title">Certified Ethical Hacker</h3>
-                            <p class="cert-issuer">EC-Council</p>
-                            <span class="cert-status in-progress">In Progress</span>
-                        </div>
-                    </a>
 
-                    <a href="cert_thm.html" class="cert-link" title="View THM Profile">
-                        <div class="cert-badge cyber-border">
-                            <div class="badge-icon box-glow-green">
-                                <i data-lucide="shield-check"></i>
-                            </div>
-                            <h3 class="cert-title">TryHackMe Certifications</h3>
-                            <p class="cert-issuer">TryHackMe</p>
-                            <span class="cert-status completed">Completed</span>
+                <!-- CTF Achievement Card -->
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="achievement-card">
+                        <div class="achievement-badge">
+                            <img src="assets/htb_ctf_badge.webp" alt="HOLMES CTF 2025 Badge" class="ctf-badge-img">
                         </div>
-                    </a>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title glow-green">Hack The Box – HOLMES CTF 2025</h3>
+                            <div class="achievement-stats">
+                                <div class="stat-item">
+                                    <i data-lucide="trophy" class="stat-icon"></i>
+                                    <div>
+                                        <span class="stat-label">Rank</span>
+                                        <span class="stat-value terminal-green">1104 / 7085 teams</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="flag" class="stat-icon"></i>
+                                    <div>
+                                        <span class="stat-label">Challenges Solved</span>
+                                        <span class="stat-value glow-cyan">35 / 65</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <i data-lucide="zap" class="stat-icon"></i>
+                                    <div>
+                                        <span class="stat-label">Total Score</span>
+                                        <span class="stat-value glow-green">3,975 points</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="achievement-skills">
+                                <h4 class="skills-title terminal-green">Skills Demonstrated:</h4>
+                                <div class="skills-tags">
+                                    <span class="skill-badge">Web Exploitation</span>
+                                    <span class="skill-badge">Reverse Engineering</span>
+                                    <span class="skill-badge">Forensics</span>
+                                    <span class="skill-badge">SOC-style Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <a href="cert_ibm.html" class="cert-link" title="View IBM Certificate">
-                        <div class="cert-badge cyber-border">
-                            <div class="badge-icon box-glow-cyan">
-                                <i data-lucide="lock"></i>
-                            </div>
-                            <h3 class="cert-title">Cybersecurity Fundamentals</h3>
-                            <p class="cert-issuer">IBM</p>
-                            <span class="cert-status completed">Completed</span>
-                        </div>
-                    </a>
+        <!-- Certifications Section -->
+        <section id="certifications" class="section-dark">
+            <div class="container">
+                <div class="section-header" style="text-align: center;">
+                    <span class="section-number terminal-green">07.</span>
+                    <h2 class="section-title">Security Credentials</h2>
+                    <span class="section-number terminal-green">...</span>
+                    <div class="section-line"></div>
+                </div>
 
-                    <a href="cert_udemy.html" class="cert-link" title="View Udemy Certificate">
-                        <div class="cert-badge cyber-border">
-                            <div class="badge-icon box-glow-green">
-                                <i data-lucide="code"></i>
+                <div class="cred-dashboard-container">
+                    <div class="cred-grid">
+                        <!-- Left: Live Stats -->
+                        <div class="cred-stats-panel">
+                            <h3 class="glow-cyan" style="margin-bottom: 0.5rem; font-size: 1.1rem;">
+                                <i data-lucide="activity"
+                                    style="width: 16px; display: inline; vertical-align: middle;"></i>
+                                SYSTEM STATUS
+                            </h3>
+
+                            <div class="stat-row">
+                                <span class="stat-label">Active Credentials</span>
+                                <span class="stat-val terminal-green">4 LOADED</span>
                             </div>
-                            <h3 class="cert-title">Python for Security</h3>
-                            <p class="cert-issuer">Udemy</p>
-                            <span class="cert-status completed">Completed</span>
+                            <div class="stat-row">
+                                <span class="stat-label">Latest Acquisition</span>
+                                <span class="stat-val glow-cyan">IBM CYBER</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Verification Level</span>
+                                <span class="stat-val glow-red">ELITE</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Last Audit</span>
+                                <span class="stat-val text-secondary">2026-01-10</span>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <a href="certifications.html" class="btn-cyber btn-primary"
+                                    style="width: 100%; justify-content: center; font-size: 0.9rem;">
+                                    <i data-lucide="external-link" style="width: 14px;"></i> ACCESS VAULT
+                                </a>
+                            </div>
                         </div>
-                    </a>
+
+                        <!-- Right: Interactive Cards -->
+                        <div class="mini-cards-grid">
+                            <!-- CEH -->
+                            <a href="certifications.html" class="mini-cert-card">
+                                <span class="mini-cert-status status-pending"></span>
+                                <div class="mini-cert-icon">
+                                    <i data-lucide="shield-alert" style="color: var(--accent-cyan);"></i>
+                                </div>
+                                <div class="mini-cert-title">Certified Ethical Hacker</div>
+                                <div class="mini-cert-issuer">EC-Council</div>
+                            </a>
+
+                            <!-- THM -->
+                            <a href="certifications.html" class="mini-cert-card">
+                                <span class="mini-cert-status status-active"></span>
+                                <div class="mini-cert-icon">
+                                    <i data-lucide="trophy" style="color: var(--terminal-green);"></i>
+                                </div>
+                                <div class="mini-cert-title">Top 1% Rank</div>
+                                <div class="mini-cert-issuer">TryHackMe</div>
+                            </a>
+
+                            <!-- IBM -->
+                            <a href="certifications.html" class="mini-cert-card">
+                                <span class="mini-cert-status status-active"></span>
+                                <div class="mini-cert-icon">
+                                    <i data-lucide="lock" style="color: var(--accent-cyan);"></i>
+                                </div>
+                                <div class="mini-cert-title">Cyber Essentials</div>
+                                <div class="mini-cert-issuer">IBM Security</div>
+                            </a>
+
+                            <!-- Udemy -->
+                            <a href="certifications.html" class="mini-cert-card">
+                                <span class="mini-cert-status status-active"></span>
+                                <div class="mini-cert-icon">
+                                    <i data-lucide="code" style="color: var(--terminal-green);"></i>
+                                </div>
+                                <div class="mini-cert-title">Python Security</div>
+                                <div class="mini-cert-issuer">Udemy</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -779,7 +1045,7 @@
         <section id="contact" class="section-light">
             <div class="container">
                 <div class="section-header" style="text-align: center;">
-                    <span class="section-number terminal-green">07.</span>
+                    <span class="section-number terminal-green">08.</span>
                     <h2 class="section-title">Establish Secure Connection</h2>
                     <span class="section-number terminal-green">...</span>
                     <div class="section-line"></div>
@@ -825,7 +1091,7 @@
                                     </div>
                                     <a href="mailto:chudarajkushwaha@gmail.com"
                                         style="color: var(--accent-cyan); text-decoration: none; font-size: 1rem; font-weight: 500;">
-                                        chudarajkushwaha@gmail.com
+                                        chudarajkushwaha45@gmail.com
                                     </a>
                                 </div>
                             </div>
