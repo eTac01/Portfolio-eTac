@@ -171,16 +171,7 @@
             margin-top: 3rem;
         }
 
-        /* Certificate Image Preview in Compact Cards */
-        .cert-image-preview {
-            width: 100%;
-            height: 150px;
-            background: #0a0a0a;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
-        }
+        /* Certificate Image Preview in Compact Cards - Updated below */
 
         .cert-image-preview img {
             width: 100%;
@@ -198,10 +189,55 @@
         .terminal-card {
             cursor: pointer;
             transition: all 0.3s ease;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
         }
 
         .terminal-card:hover {
             transform: translateY(-8px);
+        }
+
+        /* Make certificate titles adjustable */
+        .terminal-card h3 {
+            font-size: 0.95rem !important;
+            line-height: 1.3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            word-wrap: break-word;
+        }
+
+        .terminal-card .terminal-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cert-image-preview {
+            width: 100%;
+            height: 180px;
+            background: #0a0a0a;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        /* Make description text smaller and adjustable */
+        .terminal-card .terminal-line {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
         }
 
         /* Modal Styles */
@@ -328,6 +364,19 @@
             .cert-modal {
                 padding: 1rem;
             }
+
+            /* Make grid 1 column on mobile */
+            .cert-container {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+
+            /* Make grid 2 columns on tablets */
+            .cert-container {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
         }
     </style>
 </head>
@@ -369,8 +418,7 @@
                 </button>
             </div>
 
-            <div class="cert-container"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+            <div class="cert-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
                 <!-- HTB-CTF Certificate -->
                 <div class="terminal-card" id="htb-ctf" data-category="security" style="display: none;"
                     onclick="openCertModal('HTB-CTF', 'Hack The Box', 'assets/Certificates/cert_htb_ctf.jpg', 'This certification validates skills in penetration testing, footprinting, and ethical hacking methodologies. It covers the latest tools and techniques used by malicious hackers and information security professionals alike.')">
@@ -579,12 +627,211 @@
                             </div>
                             <span class="cert-status completed" style="margin-left: auto;">Completed</span>
                         </div>
-                        <p class="terminal-line">Practical course on using Python for cybersecurity tasks, developing
-                            custom tools, and automating security assessments.</p>
+                        <p class="terminal-line">Comprehensive Python programming course focused on cybersecurity
+                            applications. Covered topics include network scanning, packet manipulation with Scapy, web
+                            scraping for OSINT, developing custom security tools, automating penetration testing
+                            workflows, malware analysis basics, and creating security automation scripts. Gained
+                            hands-on experience building practical tools for vulnerability assessment and security
+                            operations.</p>
                     </div>
                     <div class="project-footer">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Security Automation</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Deep Learning Certificate -->
+                <div class="terminal-card" id="deep-learning" data-category="general" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./deep_learning</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 255, 65, 0.1); border: 2px solid var(--terminal-green); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="brain"
+                                    style="width: 24px; height: 24px; color: var(--terminal-green);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--terminal-green); font-size: 1.1rem; margin: 0;">Deep Learning
+                                </h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0; opacity: 0.8;">
+                                    Online Course</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Advanced neural network architectures including CNNs, RNNs, and
+                            transformers. Covered deep learning frameworks, model optimization, transfer learning, and
+                            practical applications in computer vision and natural language processing for security
+                            threat detection.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Neural Networks</span>
+                        <span class="tech-tag">AI/ML</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Generative AI Certificate -->
+                <div class="terminal-card" id="gen-ai" data-category="general" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./generative_ai</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 255, 65, 0.1); border: 2px solid var(--terminal-green); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="sparkles"
+                                    style="width: 24px; height: 24px; color: var(--terminal-green);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--terminal-green); font-size: 1.1rem; margin: 0;">Generative AI
+                                </h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0; opacity: 0.8;">
+                                    Online Course</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Comprehensive study of generative AI models including GANs, VAEs, and
+                            diffusion models. Explored prompt engineering, fine-tuning techniques, and ethical
+                            considerations. Applied generative AI for security use cases like synthetic data generation
+                            and adversarial attack simulation.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Generative AI</span>
+                        <span class="tech-tag">LLMs</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Introduction to AI Certificate -->
+                <div class="terminal-card" id="intro-ai" data-category="general" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./intro_ai</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 255, 65, 0.1); border: 2px solid var(--terminal-green); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="cpu"
+                                    style="width: 24px; height: 24px; color: var(--terminal-green);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--terminal-green); font-size: 1.1rem; margin: 0;">Introduction to
+                                    AI</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0; opacity: 0.8;">
+                                    Online Course</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Foundational AI concepts including machine learning algorithms,
+                            supervised and unsupervised learning, decision trees, and neural networks. Covered AI
+                            applications in cybersecurity such as anomaly detection, behavioral analysis, and automated
+                            threat intelligence.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">AI Fundamentals</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- OpenAI GPT Models Certificate -->
+                <div class="terminal-card" id="openai-gpt" data-category="general" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./openai_gpt</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 255, 65, 0.1); border: 2px solid var(--terminal-green); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="message-square"
+                                    style="width: 24px; height: 24px; color: var(--terminal-green);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--terminal-green); font-size: 1.1rem; margin: 0;">OpenAI GPT
+                                    Models</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0; opacity: 0.8;">
+                                    Online Course</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">In-depth exploration of GPT architecture, tokenization, embeddings, and
+                            transformer models. Learned API integration, prompt engineering best practices, fine-tuning
+                            techniques, and security considerations. Applied GPT models for security documentation,
+                            incident report generation, and threat intelligence analysis.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">GPT</span>
+                        <span class="tech-tag">NLP</span>
+                        <a href="#" class="project-link">
+                            <i data-lucide="check-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Master in Kali Linux Certificate -->
+                <div class="terminal-card" id="kali-linux" data-category="general" style="display: none;">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="terminal-title">$ ./kali_master</span>
+                    </div>
+                    <div class="terminal-body" style="min-height: 120px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(0, 255, 65, 0.1); border: 2px solid var(--terminal-green); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="terminal"
+                                    style="width: 24px; height: 24px; color: var(--terminal-green);"></i>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--terminal-green); font-size: 1.1rem; margin: 0;">Master in Kali
+                                    Linux</h3>
+                                <p style="color: var(--terminal-green); font-size: 0.85rem; margin: 0; opacity: 0.8;">
+                                    Online Course</p>
+                            </div>
+                            <span class="cert-status completed" style="margin-left: auto;">Completed</span>
+                        </div>
+                        <p class="terminal-line">Advanced Kali Linux mastery covering penetration testing methodologies,
+                            network reconnaissance, vulnerability assessment, exploitation techniques, and
+                            post-exploitation. Hands-on experience with tools like Metasploit, Nmap, Burp Suite,
+                            Wireshark, and custom script development for security testing.</p>
+                    </div>
+                    <div class="project-footer">
+                        <span class="tech-tag">Kali Linux</span>
+                        <span class="tech-tag">Penetration Testing</span>
                         <a href="#" class="project-link">
                             <i data-lucide="check-circle"></i>
                         </a>
@@ -785,8 +1032,38 @@
             'udemy': {
                 title: 'Python for Security',
                 issuer: 'Udemy',
-                image: 'assets/Certificates/cert_python_security.jpg',
-                description: 'Practical course on using Python for cybersecurity tasks, including developing custom tools, automating security assessments, and analyzing malware.'
+                image: 'assets/Certificates/cert_python_security.webp',
+                description: 'Comprehensive Python programming course focused on cybersecurity applications. Covered network scanning, packet manipulation with Scapy, web scraping for OSINT, developing custom security tools, automating penetration testing workflows, malware analysis basics, and creating security automation scripts. Gained hands-on experience building practical tools for vulnerability assessment and security operations.'
+            },
+            'deep-learning': {
+                title: 'Deep Learning',
+                issuer: 'Online Course',
+                image: 'assets/Certificates/cert_deep_learning.webp',
+                description: 'Advanced neural network architectures including CNNs, RNNs, and transformers. Covered deep learning frameworks, model optimization, transfer learning, and practical applications in computer vision and natural language processing for security threat detection.'
+            },
+            'gen-ai': {
+                title: 'Generative AI',
+                issuer: 'Online Course',
+                image: 'assets/Certificates/cert_generative_ai.webp',
+                description: 'Comprehensive study of generative AI models including GANs, VAEs, and diffusion models. Explored prompt engineering, fine-tuning techniques, and ethical considerations. Applied generative AI for security use cases like synthetic data generation and adversarial attack simulation.'
+            },
+            'intro-ai': {
+                title: 'Introduction to AI',
+                issuer: 'Online Course',
+                image: 'assets/Certificates/cert_intro_ai.webp',
+                description: 'Foundational AI concepts including machine learning algorithms, supervised and unsupervised learning, decision trees, and neural networks. Covered AI applications in cybersecurity such as anomaly detection, behavioral analysis, and automated threat intelligence.'
+            },
+            'openai-gpt': {
+                title: 'OpenAI GPT Models',
+                issuer: 'Online Course',
+                image: 'assets/Certificates/cert_openai_gpt.webp',
+                description: 'In-depth exploration of GPT architecture, tokenization, embeddings, and transformer models. Learned API integration, prompt engineering best practices, fine-tuning techniques, and security considerations. Applied GPT models for security documentation, incident report generation, and threat intelligence analysis.'
+            },
+            'kali-linux': {
+                title: 'Master in Kali Linux',
+                issuer: 'Online Course',
+                image: 'assets/Certificates/cert_kali_linux.webp',
+                description: 'Advanced Kali Linux mastery covering penetration testing methodologies, network reconnaissance, vulnerability assessment, exploitation techniques, and post-exploitation. Hands-on experience with tools like Metasploit, Nmap, Burp Suite, Wireshark, and custom script development for security testing.'
             },
             'linux-admin': {
                 title: 'Linux Security Administration',
