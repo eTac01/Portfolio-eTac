@@ -4,7 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Chudaraj Kushwaha | SOC Analyst</title>
+    <title>Resume - Chudaraj Kushwaha | SOC Analyst | Cybersecurity Professional</title>
+    <meta name="description"
+        content="Professional resume of Chudaraj Kushwaha - SOC Analyst with experience in threat detection, malware analysis, and cybersecurity operations.">
+    <meta name="keywords"
+        content="Chudaraj Kushwaha resume, SOC analyst resume, cybersecurity resume, security operations center">
+    <meta name="author" content="Chudaraj Kushwaha">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://chudaraj.com.np/resume.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Resume - Chudaraj Kushwaha | SOC Analyst">
+    <meta property="og:description"
+        content="Professional resume showcasing cybersecurity experience, projects, and certifications">
+    <meta property="og:url" content="https://chudaraj.com.np/resume.html">
+    <meta property="og:type" content="profile">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -30,9 +44,7 @@
             border-bottom: 2px solid var(--accent-cyan);
             padding-bottom: 1rem;
             margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            text-align: center;
         }
 
         .name {
@@ -43,16 +55,20 @@
             letter-spacing: 2px;
         }
 
-        .role {
-            font-size: 1.2rem;
-            color: var(--accent-green);
+        .contact-info {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
             margin-top: 0.5rem;
         }
 
-        .contact-info {
-            text-align: right;
-            font-size: 0.9rem;
-            color: #888;
+        .contact-info a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-green);
         }
 
         .section {
@@ -87,9 +103,15 @@
             color: #888;
         }
 
+        .location {
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
         }
 
@@ -125,8 +147,32 @@
             background: var(--accent-green);
         }
 
-        .print-only {
-            display: none;
+        .education-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: rgba(0, 240, 255, 0.1);
+            padding: 1rem;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .cert-name {
+            font-weight: bold;
+            color: var(--accent-cyan);
+        }
+
+        .cert-issuer {
+            color: #888;
+            font-size: 0.9rem;
         }
 
         @media print {
@@ -136,13 +182,13 @@
             }
 
             .name,
-            .role,
             .section-title {
                 color: #000 !important;
                 border-color: #000;
             }
 
-            .skill-item {
+            .skill-item,
+            .cert-item {
                 border-color: #000;
                 background: none;
                 border: 1px solid #ccc;
@@ -157,90 +203,127 @@
 
 <body>
     <header class="header">
-        <div>
-            <h1 class="name">Chudaraj Kushwaha</h1>
-            <div class="role">SOC Analyst | Cybersecurity Professional</div>
-        </div>
+        <h1 class="name">Chudaraj Kushwaha</h1>
         <div class="contact-info">
-            <div><i class="fas fa-envelope"></i> ranchji806@gmail.com</div>
-            <div><i class="fas fa-map-marker-alt"></i> Chittoor, AP</div>
-            <div><i class="fab fa-linkedin"></i> linkedin.com/in/chudaraj-kushwaha</div>
-            <div><i class="fab fa-github"></i> github.com/eTac01</div>
+            <span>Banguluru | chudarajkushwaha45@gmail.com | +91 8603839167</span><br>
+            <a href="https://linkedin.com/in/chudaraj-kushwaha" target="_blank">LinkedIn</a> |
+            <a href="index.html">Portfolio</a>
         </div>
     </header>
 
     <section class="section">
-        <h2 class="section-title">Professional Summary</h2>
-        <p>
-            Dedicated and analytical Security Operations Center (SOC) Analyst with a strong foundation in offensive and
-            defensive cybersecurity.
-            Proficient in SIEM management, incident response, and threat hunting. continuous learner committed to
-            staying ahead of
-            emerging threats and securing critical digital infrastructure.
-        </p>
-    </section>
+        <h2 class="section-title">Work Experience</h2>
 
-    <section class="section">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-item"><strong>SIEM & Monitoring:</strong> Splunk, ELK Stack, Wazuh</div>
-            <div class="skill-item"><strong>Network Security:</strong> Wireshark, Nmap, TCP/IP Analysis</div>
-            <div class="skill-item"><strong>Incident Response:</strong> Malware Analysis, Triage, Phishing Analysis
-            </div>
-            <div class="skill-item"><strong>Offensive Security:</strong> Burp Suite, Metasploit, OWASP Top 10</div>
-            <div class="skill-item"><strong>Languages:</strong> Python, Bash, SQL</div>
-            <div class="skill-item"><strong>Compliance:</strong> NIST Framework, PCI-DSS Basics</div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title">Experience</h2>
         <div class="job">
             <div class="job-header">
-                <span class="company">IIDT - Blackbucks Intern</span>
-                <span class="date">05/2024 – 07/2024</span>
+                <span class="company">Cyber Security Intern</span>
+                <span class="date">October 2025 – December 2025</span>
             </div>
+            <div class="location">Elevate Labs | Remote</div>
+            <p style="font-style: italic; color: #888; font-size: 0.9rem;">A non-profit organization focused on
+                educational initiatives</p>
             <ul>
-                <li>Experienced monitoring and managing security incidents, performing vulnerability assessments, and
-                    implementing security controls.</li>
-                <li>Conducted simulated SQL Injection attacks to identify vulnerabilities within web applications.</li>
+                <li>Gained experience with core security tools including Kali Linux, Wireshark, Nessus, and Burp Suite
+                </li>
+                <li>Worked on real-time project and Performed basic vulnerability identification and security
+                    assessments using industry tools</li>
+                <li>Practiced SOC-style incident observation and log analysis fundamentals</li>
+                <li>Assisted in malware and file analysis through static inspection techniques to determine potential
+                    threats</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="company">Cyber Security Intern</span>
+                <span class="date">May 2024 – July 2024</span>
+            </div>
+            <div class="location">IIDT – Blackbuck | Remote</div>
+            <p style="font-style: italic; color: #888; font-size: 0.9rem;">An innovative tech company focused on
+                educational solutions</p>
+            <ul>
+                <li>Built a strong foundation in cybersecurity fundamentals, covering information gathering,
+                    vulnerability assessment, and incident response concepts, improving overall security assessment via
+                    lab, Challenge machine</li>
+                <li>Conducted information gathering and reconnaissance using Nmap, Kali Linux, and Wireshark, increasing
+                    visibility into exposed services and attack surfaces by ≈20%</li>
+                <li>Strengthened hands-on proficiency with core security tools and methodologies, achieving ≈30%
+                    improvement in tool usage efficiency by the end of the internship</li>
+                <li>Supported security incident monitoring and basic alert analysis, reducing initial investigation time
+                    by ≈20% through improved log review practices</li>
             </ul>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="section-title">Projects</h2>
+        <h2 class="section-title">Education</h2>
         <div class="job">
-            <div class="job-header">
-                <span class="company">Malware Classification System</span>
+            <div class="education-info">
+                <span class="company">Bachelor of Technology in CSE (CyberSecurity)</span>
+                <span class="date">Nov 2022 - April 2026</span>
             </div>
-            <p>Developed a machine learning based malware classifier using Python and VirusTotal API. Achieved 94%
-                accuracy in distinguishing benign vs malicious files.</p>
-        </div>
-        <div class="job">
-            <div class="job-header">
-                <span class="company">Network Traffic Analyzer</span>
-            </div>
-            <p>Built a real-time network packet analyzer using Wireshark and Python scapy to detect suspicious traffic
-                patterns and potential intrusions.</p>
+            <div class="location">Sri Venkateswara College of Engineering and Technology, Andhra Pradesh, India</div>
+            <p>GPA: 7.5, Cybersecurity</p>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="section-title">Certifications & Training</h2>
-        <ul>
-            <li><strong>Certified Ethical Hacker (CEH)</strong> - EC-Council (In Progress)</li>
-            <li><strong>TryHackMe</strong> - Top 1% Global Ranking</li>
-            <li><strong>Cybersecurity Fundamentals</strong> - IBM</li>
-            <li><strong>Python for Cybersecurity</strong> - Udemy</li>
-        </ul>
+        <h2 class="section-title">Project</h2>
+        <div class="job">
+            <div class="job-header">
+                <span class="company">Malware fine classifier using Machine Learning</span>
+            </div>
+            <ul>
+                <li>Built a ML-based system to classify Windows executable files as benign or malicious using static
+                    analysis features from real-world malware datasets</li>
+                <li>Performed feature-level analysis (PE headers, section entropy, and API imports) to detect packed
+                    malware without executing files</li>
+                <li>Trained and evaluated multiple ML models with a focus on high recall, achieving reliable malware
+                    detection while minimizing false negatives</li>
+                <li>Developed a real-time file classification interface (CLI / web-based) to simulate how malware
+                    detection works in SOC environments</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item"><strong>Programming & Scripting:</strong> Python, Bash, PowerShell (Basic)</div>
+            <div class="skill-item"><strong>SIEM & Log Analysis:</strong> Log Analysis Fundamentals, Windows Event Logs,
+                Linux System Logs</div>
+            <div class="skill-item"><strong>Security Tools:</strong> Nmap, Wireshark, Burp Suite, Metasploit, Nessus,
+                VirusTotal</div>
+            <div class="skill-item"><strong>Technologies:</strong> Git & Github, AI, Linux (Debian)</div>
+            <div class="skill-item"><strong>Operating System:</strong> Windows, Linux (Ubuntu, Kali)</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Certificates</h2>
+        <div class="cert-grid">
+            <div class="cert-item">
+                <div class="cert-name">SOC Analyst (L1)</div>
+                <div class="cert-issuer">LetsDefend(Ongoing)</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-name">HTB's All-Blue CTF</div>
+                <div class="cert-issuer">Hack The Box</div>
+            </div>
+        </div>
     </section>
 
     <div style="text-align: center; margin-top: 2rem; padding-bottom: 2rem;">
         <a href="index.html" class="btn-download"
-            style="background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); margin-right: 1rem;">Back
-            into System</a>
-        <a href="#" onclick="window.print()" class="btn-download">Download PDF Version</a>
+            style="background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); margin-right: 1rem;">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        <a href="assets/Chudaraj-kushwaha-soc.pdf" target="_blank" class="btn-download" style="margin-right: 1rem;">
+            <i class="fas fa-file-pdf"></i> View SOC Resume
+        </a>
+        <a href="assets/General-resume.pdf" target="_blank" class="btn-download">
+            <i class="fas fa-file-pdf"></i> View General Resume
+        </a>
     </div>
 </body>
 
